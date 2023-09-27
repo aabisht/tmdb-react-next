@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "check-types": "tsc --pretty --noEmit",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js --fix",
+    "test": "jest"
   },
   "dependencies": {
     "react": "latest",
@@ -22,6 +27,14 @@
     "postcss": "latest",
     "tailwindcss": "latest",
     "eslint": "latest",
-    "eslint-config-next": "latest"
+    "eslint-config-next": "latest",
+    "eslint-config-google": "latest",
+    "eslint-config-prettier": "latest",
+    "prettier": "latest",
+    "eslint-plugin-testing-library": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "jest": "latest",
+    "ts-jest": "latest"
   }
 }
