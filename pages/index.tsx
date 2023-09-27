@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 
 import { useTranslation, Trans } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -36,9 +37,9 @@ const Homepage: NextPage = () => {
               </Trans>
             </p>
             <a href={t("blog.appDir.link")}>
-              <img
-                style={{ width: "50%" }}
+              <Image
                 src="https://locize.com/blog/next-13-app-dir-i18n/next-13-app-dir-i18n.jpg"
+                alt="Test"
               />
             </a>
           </div>
@@ -51,9 +52,9 @@ const Homepage: NextPage = () => {
               </Trans>
             </p>
             <a href={t("blog.optimized.link")}>
-              <img
-                style={{ width: "50%" }}
+              <Image
                 src="https://locize.com/blog/next-i18next/next-i18next.jpg"
+                alt="Test"
               />
             </a>
           </div>
@@ -66,9 +67,9 @@ const Homepage: NextPage = () => {
               </Trans>
             </p>
             <a href={t("blog.ssg.link")}>
-              <img
-                style={{ width: "50%" }}
+              <Image
                 src="https://locize.com/blog/next-i18n-static/title.jpg"
+                alt="Test"
               />
             </a>
           </div>
