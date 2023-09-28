@@ -40,6 +40,8 @@ const Homepage: NextPage = () => {
               <Image
                 src="https://locize.com/blog/next-13-app-dir-i18n/next-13-app-dir-i18n.jpg"
                 alt="Test"
+                width={450}
+                height={183}
               />
             </a>
           </div>
@@ -55,6 +57,8 @@ const Homepage: NextPage = () => {
               <Image
                 src="https://locize.com/blog/next-i18next/next-i18next.jpg"
                 alt="Test"
+                width={450}
+                height={183}
               />
             </a>
           </div>
@@ -70,6 +74,8 @@ const Homepage: NextPage = () => {
               <Image
                 src="https://locize.com/blog/next-i18n-static/title.jpg"
                 alt="Test"
+                width={450}
+                height={183}
               />
             </a>
           </div>
