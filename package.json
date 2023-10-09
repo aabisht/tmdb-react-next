@@ -11,34 +11,42 @@
     "check-format": "prettier --check .",
     "check-types": "tsc --pretty --noEmit",
     "check-lint": "eslint . --ext ts --ext tsx --ext js --fix",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "jest --ci",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "i18next": "latest",
     "next": "latest",
+    "next-i18next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "i18next": "latest",
     "react-i18next": "latest",
-    "next-i18next": "latest"
+    "ts-node": "latest"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "latest",
+    "@types/jest": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "autoprefixer": "latest",
+    "babel-jest": "latest",
     "eslint": "latest",
     "eslint-config-google": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-testing-library": "latest",
+    "i18next-resources-for-ts": "latest",
     "jest": "latest",
+    "jest-environment-jsdom": "latest",
     "postcss": "latest",
     "prettier": "latest",
     "tailwindcss": "latest",
     "ts-jest": "latest",
     "typescript": "latest",
-    "i18next-resources-for-ts": "latest"
+    "husky": "^8.0.0"
   }
 }
