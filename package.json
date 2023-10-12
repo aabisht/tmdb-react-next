@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "i18next": "latest",
-    "next": "latest",
+    "next": "^13.5.4",
+    "next-auth": "latest",
     "next-i18next": "latest",
     "react": "latest",
     "react-dom": "latest",
@@ -39,14 +40,14 @@
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-testing-library": "latest",
+    "husky": "^8.0.0",
     "i18next-resources-for-ts": "latest",
     "jest": "latest",
     "jest-environment-jsdom": "latest",
-    "postcss": "latest",
+    "postcss": "^8.4.31",
     "prettier": "latest",
     "tailwindcss": "latest",
     "ts-jest": "latest",
-    "typescript": "latest",
-    "husky": "^8.0.0"
+    "typescript": "latest"
   }
 }

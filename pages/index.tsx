@@ -1,14 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import type { GetStaticProps, NextPage } from "next";
 
 import { useTranslation, Trans } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useSession, signIn, signOut } from "next-auth/react";
+import { NextPage } from "next";
+import { useState } from "react";
 
 const Homepage: NextPage = () => {
   const router = useRouter();
+  const { data: session } = useSession();
+
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const { t, i18n } = useTranslation("common");
+  const [loginResponse, setLoginResponse] = useState<any>({});
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onToggleLanguageClick = (newLocale: string) => {
@@ -98,16 +104,53 @@ const Homepage: NextPage = () => {
             <button type="button">{t("to-second-page")}</button>
           </Link>
         </div>
+        {session ? (
+          <div>
+            <div>{loginResponse?.ok ? "No Error" : "Login Error"}</div>
+            <button type="button" onClick={() => signOut()}>
+              Sign out
+            </button>
+          </div>
+        ) : (
+          <div>
+            <form>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={username}
+                onChange={(event) => setUsername(event.currentTarget.value)}
+              />
+              <br />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={(event) => setPassword(event.currentTarget.value)}
+              />
+              <br />
+              <button
+                type="button"
+                onClick={() =>
+                  signIn("credentials", {
+                    username: username,
+                    password: password,
+                    redirect: false,
+                    locale: router.locale,
+                  }).then(async (response: any) => {
+                    setLoginResponse(response);
+                  })
+                }
+              >
+                Login
+              </button>
+            </form>
+          </div>
+        )}
       </main>
     </>
   );
 };
-
-// or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
-export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? "en", ["common"])),
-  },
-});
 
 export default Homepage;
