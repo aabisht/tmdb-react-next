@@ -44,7 +44,7 @@ Click [here](https://tmdb-react-next.netlify.app/) to view the demo application.
 
 ## Author
 
-####Arun Bisht
+#### Arun Bisht
 
 - [Github](https://github.com/aabisht/ "Github")
 - [Instagram](https://www.instagram.com/arun.bisht/ "Instagram")
