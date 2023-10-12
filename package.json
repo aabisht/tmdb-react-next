@@ -16,6 +16,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
+    "formik": "^2.4.5",
     "i18next": "latest",
     "next": "^13.5.4",
     "next-auth": "latest",
