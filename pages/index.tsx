@@ -4,8 +4,9 @@ import { useRouter } from "next/router";
 
 import { useTranslation, Trans } from "next-i18next";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { useState } from "react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Homepage: NextPage = () => {
   const router = useRouter();
@@ -152,5 +153,12 @@ const Homepage: NextPage = () => {
     </>
   );
 };
+
+// or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
+export const getStaticProps: GetStaticProps = async ({ locale = "en" }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? "en", ["common"])),
+  },
+});
 
 export default Homepage;
