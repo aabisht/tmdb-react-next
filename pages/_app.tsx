@@ -3,6 +3,8 @@ import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { appWithTranslation } from "next-i18next";
 import { FC } from "react";
+import { PrimeReactProvider } from "primereact/api";
+import "../src/styles/globals.css";
 
 const MyApp = ({
   Component,
@@ -10,7 +12,9 @@ const MyApp = ({
 }: AppProps<{ session: Session }>) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <PrimeReactProvider value={{ unstyled: true }}>
+        <Component {...pageProps} />
+      </PrimeReactProvider>
     </SessionProvider>
   );
 };
