@@ -7,6 +7,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { GetStaticProps, NextPage } from "next";
 import { useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Layouts from "@components/layouts/layouts";
 
 const Homepage: NextPage = () => {
   const router = useRouter();
@@ -32,11 +33,14 @@ const Homepage: NextPage = () => {
   // const changeTo = i18n.resolvedLanguage === 'en' ? 'de' : 'en'
 
   return (
-    <>
+    <Layouts metatags={{ page_title: "Home Page" }}>
       <main>
         <div style={{ display: "inline-flex", width: "90%" }}>
           <div style={{ width: "33%" }}>
-            <h3 style={{ minHeight: 70 }}>{t("blog.appDir.question")}</h3>
+            <h3 style={{ minHeight: 70 }}>
+              {t("blog.appDir.question")}
+              <span className="material-icons">face</span>
+            </h3>
             <p>
               <Trans i18nKey="blog.appDir.answer">
                 Then check out
@@ -150,7 +154,7 @@ const Homepage: NextPage = () => {
           </div>
         )}
       </main>
-    </>
+    </Layouts>
   );
 };
 

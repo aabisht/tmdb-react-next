@@ -16,12 +16,14 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@material-design-icons/font": "^0.14.13",
     "@reduxjs/toolkit": "^1.9.7",
     "formik": "^2.4.5",
     "i18next": "latest",
     "next": "^13.5.4",
     "next-auth": "latest",
     "next-i18next": "latest",
+    "primereact": "^10.0.3",
     "react": "latest",
     "react-dom": "latest",
     "react-i18next": "latest",

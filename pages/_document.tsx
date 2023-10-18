@@ -7,9 +7,7 @@ class MyDocument extends Document {
       this.props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale;
     return (
       <Html lang={currentLocale}>
-        <Head>
-          <meta charSet="utf-8" />
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />
