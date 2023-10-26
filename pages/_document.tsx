@@ -8,7 +8,7 @@ class MyDocument extends Document {
     return (
       <Html lang={currentLocale}>
         <Head></Head>
-        <body>
+        <body className="tmdb">
           <Main />
           <NextScript />
         </body>
