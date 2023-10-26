@@ -5,7 +5,7 @@ const nextConfig = {
   i18n,
   reactStrictMode: false,
   images: {
-    domains: ["locize.com", "image.tmdb.org"],
+    domains: ["images.unsplash.com", "image.tmdb.org"],
   },
 };
 

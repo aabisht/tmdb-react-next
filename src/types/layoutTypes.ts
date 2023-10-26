@@ -1,8 +1,10 @@
+import { TFunction } from "i18next";
 import { ReactNode } from "react";
 
 export interface ILayoutProps {
   children: ReactNode;
   metatags?: ISEOMetaContent;
+  t: TFunction;
 }
 
 export interface ISEOMetaContent {

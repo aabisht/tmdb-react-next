@@ -5,17 +5,23 @@ import { appWithTranslation } from "next-i18next";
 import { FC } from "react";
 import { PrimeReactProvider } from "primereact/api";
 import "../src/styles/globals.css";
+import { wrapper } from "src/redux/store";
+import { Provider } from "react-redux";
 
 const MyApp = ({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps<{ session: Session }>) => {
+  const { store } = wrapper.useWrappedStore(pageProps);
+
   return (
-    <SessionProvider session={session}>
-      <PrimeReactProvider value={{ unstyled: true }}>
-        <Component {...pageProps} />
-      </PrimeReactProvider>
-    </SessionProvider>
+    <Provider store={store}>
+      <SessionProvider session={session}>
+        <PrimeReactProvider value={{ unstyled: true }}>
+          <Component {...pageProps} />
+        </PrimeReactProvider>
+      </SessionProvider>
+    </Provider>
   );
 };
 

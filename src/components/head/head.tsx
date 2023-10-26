@@ -11,7 +11,7 @@ const HTMLHead = ({ pageTitle }: { pageTitle?: string }) => {
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/favicon.ico" sizes="any"></link>
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"></link>
-        <meta name="theme-color" content="#01b4ff" />
+        <meta name="theme-color" content="#032541" />
         <title>{pageTitle}</title>
       </Head>
 
