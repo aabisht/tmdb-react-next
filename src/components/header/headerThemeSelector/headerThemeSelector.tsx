@@ -31,16 +31,22 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
       className: classNames("flex items-center justify-center mr-1"),
     }),
     trigger: {
-      className: classNames("flex items-center justify-center"),
+      className: classNames("flex items-center justify-center text-white"),
     },
+    panel: () => ({
+      className: classNames("!left-auto right-0 min-w-[150px]"),
+    }),
     wrapper: {
       className: classNames(
-        "max-h-[200px] overflow-auto bg-white shadow-md shadow-secondary border-0 ",
+        "max-h-[200px] overflow-auto bg-white shadow-md border-0 ",
       ),
+    },
+    list: {
+      className: classNames("list-none mt-0 mb-0 pl-0 leading-none"),
     },
     item: {
       className: classNames(
-        "cursor-pointer font-normal relative whitespace-nowrap m-0 p-3 border-0",
+        "cursor-pointer font-normal relative whitespace-nowrap m-0 p-0 border-0",
       ),
     },
   };
@@ -97,18 +103,25 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
 
   const themeOptionTemplate = (option: IThemeOption) => {
     return (
-      <TMDBButton aria-label={option.ariaLabel} title={option.ariaLabel}>
+      <TMDBButton
+        aria-label={option.ariaLabel}
+        title={option.ariaLabel}
+        className="w-[100%] inline-flex items-center px-3 py-2 hover:bg-white-darkest hover:text-secondary"
+      >
         <TMDBIcon iconsName={option.icon} />
-        <span>{option.name}</span>
+        <span className="ml-2">{option.name}</span>
       </TMDBButton>
     );
   };
 
   const selectedThemeOptionTemplate = (option: IThemeOption) => {
     return option ? (
-      <TMDBIcon iconsName={option.icon} className="nav-link" />
+      <TMDBIcon iconsName={option.icon} className="nav-link text-white" />
     ) : selectedTheme ? (
-      <TMDBIcon iconsName={selectedTheme?.icon} className="nav-link" />
+      <TMDBIcon
+        iconsName={selectedTheme?.icon}
+        className="nav-link text-white"
+      />
     ) : (
       ""
     );
