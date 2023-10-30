@@ -29,17 +29,27 @@ const HeaderNavigation = ({ t }: { t: TFunction }) => {
     },
   ];
   return (
-    <ul className="flex justify-start content-center" role="menubar">
+    <ul
+      className="flex justify-start content-center mt-0 mb-0 pl-0 list-none"
+      role="menubar"
+    >
       {navItems.map((navItem, navItemIndex) => {
         return (
           <li
-            className={`mr-4 uppercase ${
-              router.route === navItem.href ? "active font-semibold" : ""
+            className={`mr-4 uppercase mt-0 mb-0 pl-0  ${
+              router.route === navItem.href ? "active" : ""
             }`}
             id={navItem.id}
             key={navItemIndex}
           >
-            <TMDBLink href={navItem.href || "#"} className="text-white">
+            <TMDBLink
+              href={navItem.href || "#"}
+              className={`text-white no-underline hover:text-secondary ${
+                router.route === navItem.href
+                  ? "font-semibold text-secondary"
+                  : "font-light"
+              }`}
+            >
               {navItem.label}
             </TMDBLink>
           </li>
