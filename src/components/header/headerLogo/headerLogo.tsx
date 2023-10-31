@@ -5,7 +5,7 @@ import { TFunction } from "i18next";
 
 const HeaderLogo = ({ t }: { t: TFunction }) => {
   return (
-    <Link href="/" className="inline-flex content-center">
+    <Link href="/" className="header-logo inline-flex content-center">
       <Image
         src={logoImg}
         priority={true}
