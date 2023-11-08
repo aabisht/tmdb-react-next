@@ -75,3 +75,7 @@ export const getPrimaryReleaseYear = (primaryReleaseYear: string) => {
 export const getFirstAirDateYear = (firstAirDateYear: string) => {
   return `&first_air_date_year=${firstAirDateYear}`;
 };
+
+export const getTotalSliderItems = () => {
+  return parseInt(process.env.TOTAL_SLIDER_ITEMS || "");
+};
