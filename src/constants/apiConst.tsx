@@ -14,8 +14,9 @@ import {
   getWithWatchMonetizationTypes,
   getYear,
 } from "@utils/apiHelper";
-import { SORT_BY } from "./frontendConst";
+import { SORT_BY, TIME_WINDOW } from "./frontendConst";
 import { IFilterParameter } from "@type/apiTypes";
+import { ITrendingRequestParam } from "@type/commonTypes";
 
 export const API_TYPE: {
   [key: string]: string;
@@ -36,6 +37,7 @@ export const API_BASE_URL: { [key: string]: string } = {
   credit: `${getAPIURL()}/credit`,
   discover: `${getAPIURL()}/discover`,
   find: `${getAPIURL()}/find`,
+  trending: `${getAPIURL()}/trending`,
 };
 
 export const API_ROUTES = {
@@ -223,6 +225,40 @@ export const API_ROUTES = {
       `${API_BASE_URL.find}/${externalId}${getAPIKey()}${getLanguage(
         language,
       )}${getExternalSource(externalSource)}`,
+  },
+  TRENDING: {
+    getTrendingAll: ({
+      timeWindow = TIME_WINDOW.DAY,
+      language = "en-US",
+      pageNumber = 1,
+    }: ITrendingRequestParam) =>
+      `${API_BASE_URL.trending}/all/${timeWindow}${getAPIKey()}${getLanguage(
+        language,
+      )}${getPageNumber(pageNumber)}`,
+    getTrendingMovies: ({
+      timeWindow = TIME_WINDOW.DAY,
+      language = "en-US",
+      pageNumber = 1,
+    }: ITrendingRequestParam) =>
+      `${API_BASE_URL.trending}/movie/${timeWindow}${getAPIKey()}${getLanguage(
+        language,
+      )}${getPageNumber(pageNumber)}`,
+    getTrendingPeople: ({
+      timeWindow = TIME_WINDOW.DAY,
+      language = "en-US",
+      pageNumber = 1,
+    }: ITrendingRequestParam) =>
+      `${API_BASE_URL.trending}/person/${timeWindow}${getAPIKey()}${getLanguage(
+        language,
+      )}${getPageNumber(pageNumber)}`,
+    getTrendingTV: ({
+      timeWindow = TIME_WINDOW.DAY,
+      language = "en-US",
+      pageNumber = 1,
+    }: ITrendingRequestParam) =>
+      `${API_BASE_URL.trending}/tv/${timeWindow}${getAPIKey()}${getLanguage(
+        language,
+      )}${getPageNumber(pageNumber)}`,
   },
 };
 

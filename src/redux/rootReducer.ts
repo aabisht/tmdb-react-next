@@ -1,6 +1,7 @@
 import { combineReducers, AnyAction } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import themeSlice from "@components/header/headerThemeSelector/redux/slice";
+import trendingMediaSlice from "@modules/homePage/components/trendingMedia/redux/slice";
 
 const rootReducer = (state: any, action: AnyAction) => {
   switch (action.type) {
@@ -10,6 +11,7 @@ const rootReducer = (state: any, action: AnyAction) => {
     default: {
       const combineReducer = combineReducers({
         themeSlice,
+        trendingMediaSlice,
       });
       return combineReducer(state, action);
     }
