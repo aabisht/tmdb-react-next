@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps((store) =>
     await store.dispatch<any>(fetchTrendingMedia(getTotalSliderItems()));
     return {
       props: {
-        ...(await serverSideTranslations(locale ?? "en", ["common"])),
+        ...(await serverSideTranslations(locale, ["common"])),
       },
     };
   },
