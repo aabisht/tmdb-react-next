@@ -24,4 +24,8 @@ export interface ITMDBLink extends LinkProps {
   children: ReactElement | string | undefined;
   className?: string;
   external?: boolean;
+  severity?: string;
+  link?: boolean;
+  outline?: boolean;
+  rounded?: boolean;
 }

@@ -175,3 +175,13 @@ export const CHANGE_KEYS = {
   VIDEO: "video",
   VIDEOS: "videos",
 };
+
+export const BUTTON_VARIENTS = {
+  PRIMARY: "primary",
+  SECONDARY: "secondary",
+  SUCCESS: "success",
+  DARK: "dark",
+  WARNING: "warning",
+  LIGHT: "light",
+  DANGER: "danger",
+};

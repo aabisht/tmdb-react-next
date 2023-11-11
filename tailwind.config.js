@@ -1,5 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 
+const round = (num) =>
+  num
+    .toFixed(7)
+    .replace(/(\.[0-9]+?)0+$/, "$1")
+    .replace(/\.0$/, "");
+const rem = (px) => `${round(px / 16)}rem`;
+const em = (px, base) => `${round(px / base)}em`;
+
 const config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -52,8 +60,43 @@ const config = {
             "--tw-prose-invert-th-borders": theme("colors.black.lightest"),
             "--tw-prose-invert-td-borders": theme("colors.black.lightest"),
             maxWidth: "100%",
+            fontSize: rem(16),
             lineHeight: 1.5,
             backgroundColor: "var(--tw-prose-body-bg)",
+            "h1, h2, h3, h4, h5, h6": {
+              marginTop: 0,
+              marginBottom: em(4, 8),
+            },
+            "h1, h2": {
+              fontWeight: theme("fontWeight.light"),
+            },
+            "h3, h4": {
+              fontWeight: theme("fontWeight.normal"),
+            },
+            "h5, h6": {
+              fontWeight: theme("fontWeight.bold"),
+            },
+            h1: {
+              fontSize: em(46, 16),
+            },
+            h2: {
+              fontSize: em(38, 16),
+            },
+            h3: {
+              fontSize: em(30, 16),
+            },
+            h4: {
+              fontSize: em(24, 16),
+            },
+            h5: {
+              fontSize: em(20, 16),
+            },
+            h6: {
+              fontSize: em(16, 16),
+            },
+            "p, ul": {
+              marginBottom: em(16, 16),
+            },
             img: {
               marginTop: "0",
               marginBottom: "0",
@@ -87,6 +130,11 @@ const config = {
           light: "#2be1b5",
           DEFAULT: "#1ed5a9",
           dark: "#1bbf97",
+        },
+        success: {
+          light: "#27da69",
+          DEFAULT: "#22C55E",
+          dark: "#1eaf54",
         },
         danger: {
           light: "#e04b59",
@@ -132,6 +180,9 @@ const config = {
         screens: {
           DEFAULT: "100%",
         },
+      },
+      backgroundImage: {
+        "banner-gradient": "linear-gradient(72deg,var(--tw-gradient-stops))",
       },
     },
   },

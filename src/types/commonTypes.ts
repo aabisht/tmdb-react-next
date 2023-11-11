@@ -46,3 +46,30 @@ export interface ITrendingMediaResults {
   vote_average: number;
   vote_count: number;
 }
+
+export interface IConfiguration {
+  apiConfiguration: IAPIConfiguration;
+}
+
+export interface IAPIConfiguration {
+  images: {
+    base_url: string;
+    secure_base_url: string;
+    backdrop_sizes: string[];
+    logo_sizes: string[];
+    poster_sizes: string[];
+    profile_sizes: string[];
+    still_sizes: string[];
+  };
+  change_keys: string[];
+}
+
+export interface ITMDBImg {
+  path: string;
+  alt: string;
+  imgType: string;
+  width: number;
+  height: number;
+  quality?: number;
+  className?: string;
+}
