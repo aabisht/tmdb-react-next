@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 const Header = ({ t, useDarkTheme = false }: IIHeader) => {
   const [scrollTop, setScrollTop] = useState<number>(0);
-
   useEffect(() => {
     const onScroll = (event: any) => {
       setScrollTop(event.target.documentElement.scrollTop);
