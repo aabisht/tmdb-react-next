@@ -1,0 +1,35 @@
+.card-slider :global .slick-slider {
+  @apply xl:mx-6 mx-2;
+}
+
+.card-slider :global .slick-slider .slick-list {
+  @apply overflow-visible;
+}
+
+.card-slider :global .slick-slider .slick-track {
+  @apply flex items-stretch;
+}
+
+.card-slider :global .slick-slider .slick-track .slick-slide {
+  @apply h-[auto];
+}
+
+.card-slider :global .slick-slider .slick-track .slick-slide > div {
+  @apply h-full;
+}
+
+.card-slider.has-title :global .slick-dots-list {
+  @apply -top-[40px];
+}
+
+.card-slider :global .slick-dots-list li {
+  @apply m-0 p-0 mx-[2px];
+}
+
+.card-slider :global .slick-dots-list li button {
+  @apply bg-black-light/40;
+}
+
+.card-slider :global .slick-dots-list li.slick-active button {
+  @apply bg-black-light;
+}

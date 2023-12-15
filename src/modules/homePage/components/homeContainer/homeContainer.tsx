@@ -1,9 +1,10 @@
 import TrendingMedia from "../trendingMedia/trendingMedia";
+import { TFunction } from "i18next";
 
-const HomeContainer = () => {
+const HomeContainer = ({ t }: { t: TFunction }) => {
   return (
     <>
-      <TrendingMedia />
+      <TrendingMedia t={t} />
     </>
   );
 };

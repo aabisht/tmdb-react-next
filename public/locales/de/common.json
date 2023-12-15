@@ -25,5 +25,10 @@
     "TMDBBanner": {
       "moreInfo": "Mehr Info"
     }
+  },
+  "homePage": {
+    "TrendingMedia": {
+      "title": "Gerade Angesagt"
+    }
   }
 }

@@ -12,7 +12,7 @@ const Homepage: NextPage = () => {
 
   return (
     <Layouts metatags={{ page_title: "Home Page" }} t={t}>
-      <HomeContainer />
+      <HomeContainer t={t} />
     </Layouts>
   );
 };
