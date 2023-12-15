@@ -25,5 +25,10 @@
     "TMDBBanner": {
       "moreInfo": "More Info"
     }
+  },
+  "homePage": {
+    "TrendingMedia": {
+      "title": "Trending Now"
+    }
   }
 }

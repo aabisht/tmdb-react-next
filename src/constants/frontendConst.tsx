@@ -185,3 +185,16 @@ export const BUTTON_VARIENTS = {
   LIGHT: "light",
   DANGER: "danger",
 };
+
+export const SCREENS = {
+  SM: 480,
+  MD: 768,
+  LG: 992,
+  XL: 1280,
+  "2XL": 1440,
+  SM_MIN: 479,
+  MD_MIN: 767,
+  LG_MIN: 991,
+  XL_MIN: 1279,
+  "2XL_MIN": 1439,
+};
