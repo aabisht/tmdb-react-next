@@ -17,16 +17,16 @@ const Homepage: NextPage = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = wrapper.getStaticProps((store) =>
-  // async ({ locale = "en", params, req, res, query }) => {
-  async ({ locale = "en" }) => {
-    await store.dispatch<any>(fetchTrendingMedia(getTotalSliderItems()));
-    return {
-      props: {
-        ...(await serverSideTranslations(locale, ["common"])),
-      },
-    };
-  },
+export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
+  (store) =>
+    async ({ locale = "en" }) => {
+      await store.dispatch<any>(fetchTrendingMedia(getTotalSliderItems()));
+      return {
+        props: {
+          ...(await serverSideTranslations(locale, ["common"])),
+        },
+      };
+    },
 );
 
 export default Homepage;

@@ -19,13 +19,6 @@ const TrendingMedia = ({ t }: { t: TFunction }) => {
         sliderTitle={t("homePage.TrendingMedia.title")}
         sliderLink="/browse/all/trending/now"
       />
-      {/* {trendingMediaResults.map((trendingMediaResult) => {
-        return (
-          <div key={trendingMediaResult.id}>
-            <TMDBCard cardData={trendingMediaResults[0]} />
-          </div>
-        );
-      })} */}
     </>
   );
 };
