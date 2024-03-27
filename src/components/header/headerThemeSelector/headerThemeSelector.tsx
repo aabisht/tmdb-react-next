@@ -17,30 +17,6 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
   );
   const [selectedTheme, setSelectedTheme] = useState<IThemeOption>();
 
-  useEffect(() => {
-    const themeCode = localStorage.getItem("theme") || themes[0].code;
-    dispatch(setTheme(themeCode));
-    const selectedThemeCode = themes.find((theme) => theme.code === themeCode);
-    setSelectedTheme(selectedThemeCode || themes[0]);
-  }, [dispatch, theme]);
-
-  useEffect(() => {
-    const setAutoThemeInterval = () => {
-      if (selectedTheme?.code === THEME_NAME.AUTO) {
-        const autoThemeInterval = setInterval(() => {
-          const hours = new Date().getHours();
-          dispatch(
-            setTheme(
-              hours >= 6 && hours < 18 ? themes[0].code : themes[1].code,
-            ),
-          );
-        }, 1000);
-        return () => clearInterval(autoThemeInterval);
-      }
-    };
-    return setAutoThemeInterval();
-  }, [dispatch, selectedTheme, theme]);
-
   const themes: IThemeOption[] = useMemo(
     () => [
       {
@@ -64,6 +40,30 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
     ],
     [t],
   );
+
+  useEffect(() => {
+    const themeCode = localStorage.getItem("theme") || themes[0].code;
+    dispatch(setTheme(themeCode));
+    const selectedThemeCode = themes.find((theme) => theme.code === themeCode);
+    setSelectedTheme(selectedThemeCode || themes[0]);
+  }, [themes, dispatch]);
+
+  useEffect(() => {
+    const setAutoThemeInterval = () => {
+      if (selectedTheme?.code === THEME_NAME.AUTO) {
+        const autoThemeInterval = setInterval(() => {
+          const hours = new Date().getHours();
+          dispatch(
+            setTheme(
+              hours >= 6 && hours < 18 ? themes[0].code : themes[1].code,
+            ),
+          );
+        }, 1000);
+        return () => clearInterval(autoThemeInterval);
+      }
+    };
+    return setAutoThemeInterval();
+  }, [themes, dispatch, selectedTheme]);
 
   const handleThemeChange = (theme: IThemeOption) => {
     setSelectedTheme(theme);

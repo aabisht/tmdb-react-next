@@ -4,8 +4,8 @@ import Header from "./header";
 import { useTranslation } from "next-i18next";
 import { TFunction } from "i18next";
 import thunk from "redux-thunk";
-import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 
 const middleware = [thunk];
 
