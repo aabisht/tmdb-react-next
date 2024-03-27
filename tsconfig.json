@@ -20,13 +20,14 @@
       }
     ],
     "paths": {
-      "@/*": ["/*"],
       "@constants": ["src/constants/index.tsx"],
       "@utils/*": ["src/utils/*"],
       "@type/*": ["src/types/*"],
       "@components/*": ["src/components/*"],
       "@services/*": ["src/services/*"],
-      "@modules/*": ["src/modules/*"]
+      "@modules/*": ["src/modules/*"],
+      "@pages/*": ["pages/*"],
+      "@redux/*": ["src/redux/*"]
     }
   },
   "include": [

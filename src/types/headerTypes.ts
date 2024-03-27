@@ -7,7 +7,7 @@ export interface IIHeader {
 
 export interface IHeaderNav {
   label: string;
-  href?: string;
+  href: string;
   id?: string;
 }
 

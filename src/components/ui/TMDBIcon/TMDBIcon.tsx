@@ -9,6 +9,8 @@ export const TMDBIcon = ({
     <span
       className={`material-icons${isOutline ? "-outlined" : ""} ${className}`}
       aria-hidden="true"
+      role="img"
+      aria-label={iconsName}
     >
       {iconsName}
     </span>
