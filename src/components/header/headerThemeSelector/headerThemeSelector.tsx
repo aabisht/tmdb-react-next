@@ -22,7 +22,7 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
     dispatch(setTheme(themeCode));
     const selectedThemeCode = themes.find((theme) => theme.code === themeCode);
     setSelectedTheme(selectedThemeCode || themes[0]);
-  }, [dispatch]);
+  }, [dispatch, theme]);
 
   useEffect(() => {
     const setAutoThemeInterval = () => {
@@ -39,7 +39,7 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
       }
     };
     return setAutoThemeInterval();
-  }, [dispatch, selectedTheme]);
+  }, [dispatch, selectedTheme, theme]);
 
   const themes: IThemeOption[] = useMemo(
     () => [
