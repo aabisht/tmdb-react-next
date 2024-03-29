@@ -10,51 +10,61 @@ export const TMDBLink = ({
   scroll = false,
   prefetch = false,
   external = false,
-  severity,
+  severity = BUTTON_VARIANTS.PRIMARY,
   link = true,
   outline = false,
   rounded = false,
 }: ITMDBLink) => {
   const getSeverityClassName = (): string => {
-    switch (severity) {
-      case BUTTON_VARIANTS.PRIMARY:
-        return getClassName("primary");
-      case BUTTON_VARIANTS.SECONDARY:
-        return getClassName("secondary");
-      case BUTTON_VARIANTS.SUCCESS:
-        return getClassName("success");
+    return link
+      ? linkVariantTextClass(severity)
+      : outline
+        ? outlineBtnVariantClass(severity)
+        : normalBtnVariantClass(severity);
+  };
+
+  const linkVariantTextClass = (variant: string): string => {
+    switch (variant) {
       case BUTTON_VARIANTS.LIGHT:
-        return getClassName("light");
-      case BUTTON_VARIANTS.WARNING:
-        return getClassName("warning");
+        return "text-white";
       case BUTTON_VARIANTS.DARK:
-        return getClassName("dark");
-      case BUTTON_VARIANTS.DANGER:
-        return getClassName("danger");
+        return "text-black-light";
       default:
-        return "";
+        return `text-${variant}`;
     }
   };
 
-  const getClassName = (variant: string): string => {
-    const baseClassName = link
-      ? `text-${variant}`
-      : `bg-${variant} border-${variant} text-white`;
-    const hoverClassName = `hover:bg-${variant} hover:border-${variant} hover:text-white`;
-    const outlineClassName = `border-${variant} text-${variant} ${hoverClassName}`;
-    return link
-      ? baseClassName
-      : outline
-        ? outlineClassName
-        : `${baseClassName} ${hoverClassName}`;
+  const normalBtnVariantClass = (variant: string): string => {
+    switch (variant) {
+      case BUTTON_VARIANTS.LIGHT:
+        return "bg-white border-white text-black-light";
+      case BUTTON_VARIANTS.DARK:
+        return "bg-black-light border-black-light text-white";
+      default:
+        return `bg-${variant} border-${variant} text-white`;
+    }
   };
 
-  const setClassName = (): string => {
+  const outlineBtnVariantClass = (variant: string): string => {
+    switch (variant) {
+      case BUTTON_VARIANTS.LIGHT:
+        return "border-white text-white hover:bg-white hover:border-white hover:text-black-light";
+      case BUTTON_VARIANTS.DARK:
+        return "border-black-light text-black-light hover:bg-black-light hover:border-black-light hover:text-white";
+      default:
+        return `border-${variant} text-${variant} hover:bg-${variant} hover:border-${variant} hover:text-white`;
+    }
+  };
+
+  const getClassName = (): string => {
     const baseClasses = `cursor-pointer transition-all duration-300 ${className} ${getSeverityClassName()}`;
-    const linkClasses = !link
-      ? `border border-solid no-underline text-center relative select-none px-4 py-3 inline-flex items-center ${rounded ? "rounded-3xl" : "rounded-sm"}`
-      : "";
     const outlineClass = !link && outline ? "bg-transparent" : "";
+    const linkClasses = !link
+      ? `border border-solid no-underline text-center relative select-none px-4 py-3 inline-flex items-center ${
+          rounded ? "rounded-3xl " : "rounded-sm "
+        }`
+      : " ";
+
     return `${baseClasses} ${linkClasses} ${outlineClass}`;
   };
 
@@ -63,7 +73,7 @@ export const TMDBLink = ({
       href={typeof href === "string" ? href : ""}
       target="_blank"
       rel="noreferrer"
-      className={setClassName()}
+      className={getClassName()}
     >
       {children}
     </a>
@@ -73,7 +83,7 @@ export const TMDBLink = ({
       replace={replace}
       scroll={scroll}
       prefetch={prefetch}
-      className={setClassName()}
+      className={getClassName()}
     >
       {children}
     </Link>

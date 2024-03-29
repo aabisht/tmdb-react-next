@@ -44,6 +44,25 @@ describe("TMDBLink", () => {
     expect(linkElement).toHaveClass("text-primary");
   });
 
+  it("applies severity prop correctly having rounded border", () => {
+    render(
+      <TMDBLink
+        {...defaultProps}
+        severity="primary"
+        rounded={true}
+        link={false}
+      />,
+    );
+    const linkElement = screen.getByRole("link", { name: /Example Link/i });
+    expect(linkElement).toHaveClass("rounded-3xl");
+  });
+
+  it("applies severity prop correctly and of not type link", () => {
+    render(<TMDBLink {...defaultProps} severity="primary" link={false} />);
+    const linkElement = screen.getByRole("link", { name: /Example Link/i });
+    expect(linkElement).toHaveClass("text-white");
+  });
+
   it("applies severity prop with secondary correctly", () => {
     render(<TMDBLink {...defaultProps} severity={BUTTON_VARIANTS.SECONDARY} />);
     const linkElement = screen.getByRole("link", { name: /Example Link/i });
@@ -59,7 +78,32 @@ describe("TMDBLink", () => {
   it("applies severity prop with light correctly", () => {
     render(<TMDBLink {...defaultProps} severity={BUTTON_VARIANTS.LIGHT} />);
     const linkElement = screen.getByRole("link", { name: /Example Link/i });
-    expect(linkElement).toHaveClass("text-light");
+    expect(linkElement).toHaveClass("text-white");
+  });
+
+  it("applies severity prop with light and link as false correctly", () => {
+    render(
+      <TMDBLink
+        {...defaultProps}
+        severity={BUTTON_VARIANTS.LIGHT}
+        link={false}
+      />,
+    );
+    const linkElement = screen.getByRole("link", { name: /Example Link/i });
+    expect(linkElement).toHaveClass("text-black-light");
+  });
+
+  it("applies severity prop with light and link as false correctly and is of type outline", () => {
+    render(
+      <TMDBLink
+        {...defaultProps}
+        severity={BUTTON_VARIANTS.LIGHT}
+        link={false}
+        outline={true}
+      />,
+    );
+    const linkElement = screen.getByRole("link", { name: /Example Link/i });
+    expect(linkElement).toHaveClass("text-white");
   });
 
   it("applies severity prop with warning correctly", () => {
@@ -71,7 +115,32 @@ describe("TMDBLink", () => {
   it("applies severity prop with dark correctly", () => {
     render(<TMDBLink {...defaultProps} severity={BUTTON_VARIANTS.DARK} />);
     const linkElement = screen.getByRole("link", { name: /Example Link/i });
-    expect(linkElement).toHaveClass("text-dark");
+    expect(linkElement).toHaveClass("text-black-light");
+  });
+
+  it("applies severity prop with dark and link as false correctly", () => {
+    render(
+      <TMDBLink
+        {...defaultProps}
+        severity={BUTTON_VARIANTS.DARK}
+        link={false}
+      />,
+    );
+    const linkElement = screen.getByRole("link", { name: /Example Link/i });
+    expect(linkElement).toHaveClass("text-white");
+  });
+
+  it("applies severity prop with dark and link as false correctly and is of type outline", () => {
+    render(
+      <TMDBLink
+        {...defaultProps}
+        severity={BUTTON_VARIANTS.DARK}
+        link={false}
+        outline={true}
+      />,
+    );
+    const linkElement = screen.getByRole("link", { name: /Example Link/i });
+    expect(linkElement).toHaveClass("text-black-light");
   });
 
   it("applies severity prop with danger correctly", () => {
