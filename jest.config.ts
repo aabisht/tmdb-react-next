@@ -1,6 +1,15 @@
 module.exports = {
+  coverageReporters: [
+    "html",
+    "json",
+    "lcov",
+    ["text-summary", { skipFull: false }],
+  ],
+  collectCoverage: true,
+  coverageDirectory: "coverage",
   collectCoverageFrom: [
-    "**/*.{js,jsx,ts,tsx}",
+    "**/*.tsx",
+    "**/*.ts",
     "!**/*.d.ts",
     "!**/node_modules/**",
   ],
@@ -17,15 +26,13 @@ module.exports = {
     "^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$": `<rootDir>/__mocks__/fileMock.js`,
 
     // Handle module aliases
-    "^@commonComponents/(.*)$": "<rootDir>/src/common/components/$1",
-    "^@commonServices/(.*)$": "<rootDir>/src/common/services/$1",
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
+    "^@services/(.*)$": "<rootDir>/src/services/$1",
     "^@constants": "<rootDir>/src/constants",
-    "^@pages/(.*)$": "<rootDir>/src/pages/$1",
+    "^@pages/(.*)$": "<rootDir>/pages/$1",
     "^@redux/(.*)$": "<rootDir>/src/redux/$1",
     "^@modules/(.*)$": "<rootDir>/src/modules/$1",
-    "^@commonModels/(.*)$": "<rootDir>/src/common/models/$1",
-    "^@yup/(.*)$": "<rootDir>/src/common/yup/$1",
-    "^@type/(.*)$": "<rootDir>/src/common/types/$1",
+    "^@type/(.*)$": "<rootDir>/src/types/$1",
     "^@utils/(.*)$": "<rootDir>/src/utils/$1",
     "^@hooks/(.*)$": "<rootDir>/src/common/hooks/$1",
   },

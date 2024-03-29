@@ -11,7 +11,8 @@ const TMDBImg = ({
   quality = 100,
   className = "",
 }: ITMDBImg) => {
-  const src = `${getBaseURL()}${imgType}${path}`;
+  const baseURL = getBaseURL();
+  const src = `${baseURL}${imgType}${path}`;
 
   return (
     <Image

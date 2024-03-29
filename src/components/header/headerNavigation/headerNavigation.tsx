@@ -1,3 +1,4 @@
+import React from "react";
 import { TMDBLink } from "@components/ui";
 import { IHeaderNav } from "@type/headerTypes";
 import { TFunction } from "i18next";
@@ -28,33 +29,29 @@ const HeaderNavigation = ({ t }: { t: TFunction }) => {
       href: "/browse/all/trending/now",
     },
   ];
+
+  const isActiveNavItem = (href: string) =>
+    router.route === href ? "active" : "";
+
   return (
     <ul
       className="flex justify-start content-center mt-0 mb-0 pl-0 list-none"
       role="menubar"
     >
-      {navItems.map((navItem, navItemIndex) => {
-        return (
-          <li
-            className={`mr-4 uppercase mt-0 mb-0 pl-0  ${
-              router.route === navItem.href ? "active" : ""
-            }`}
-            id={navItem.id}
-            key={navItemIndex}
+      {navItems.map((navItem, navItemIndex) => (
+        <li
+          className={`mr-4 uppercase mt-0 mb-0 pl-0 ${isActiveNavItem(navItem.href)}`}
+          id={navItem.id}
+          key={navItemIndex}
+        >
+          <TMDBLink
+            href={navItem.href}
+            className={`text-white no-underline hover:text-secondary ${isActiveNavItem(navItem.href) ? "font-semibold text-secondary" : "font-light"}`}
           >
-            <TMDBLink
-              href={navItem.href || "#"}
-              className={`text-white no-underline hover:text-secondary ${
-                router.route === navItem.href
-                  ? "font-semibold text-secondary"
-                  : "font-light"
-              }`}
-            >
-              {navItem.label}
-            </TMDBLink>
-          </li>
-        );
-      })}
+            {navItem.label}
+          </TMDBLink>
+        </li>
+      ))}
     </ul>
   );
 };

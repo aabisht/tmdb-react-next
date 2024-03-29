@@ -1,6 +1,6 @@
 import { ITrendingMediaResults } from "@type/commonTypes";
 import TMDBImg from "../TMDBImg/TMDBImg";
-import { BACKDROP_SIZES, BUTTON_VARIENTS, MEDIA } from "@constants";
+import { BACKDROP_SIZES, BUTTON_VARIANTS, MEDIA } from "@constants";
 import { ReactElement } from "react";
 import { TMDBIcon, TMDBLink } from "..";
 import { useTranslation } from "next-i18next";
@@ -67,7 +67,7 @@ export const TMDBBanner = ({
               <p className="line-clamp-3">{bannerData.overview}</p>
               <TMDBLink
                 href={""}
-                severity={BUTTON_VARIENTS.LIGHT}
+                severity={BUTTON_VARIANTS.LIGHT}
                 link={false}
                 outline={true}
               >

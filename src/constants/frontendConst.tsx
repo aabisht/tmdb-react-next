@@ -176,7 +176,7 @@ export const CHANGE_KEYS = {
   VIDEOS: "videos",
 };
 
-export const BUTTON_VARIENTS = {
+export const BUTTON_VARIANTS = {
   PRIMARY: "primary",
   SECONDARY: "secondary",
   SUCCESS: "success",
