@@ -5,12 +5,17 @@ export const TMDBIcon = ({
   iconsName,
   className = "",
 }: ITMDBIcon) => {
+  const iconClassName = isOutline
+    ? "material-icons-outlined"
+    : "material-icons";
+
   return (
     <span
-      className={`material-icons${isOutline ? "-outlined" : ""} ${className}`}
+      className={`${iconClassName} ${className}`}
       aria-hidden="true"
       role="img"
       aria-label={iconsName}
+      data-testid={`TMDBIcon_${iconsName}`}
     >
       {iconsName}
     </span>
