@@ -198,3 +198,8 @@ export const SCREENS = {
   XL_MIN: 1279,
   "2XL_MIN": 1439,
 };
+
+export const ARROW_TYPE = {
+  PREVIOUS: "previous",
+  NEXT: "next",
+};

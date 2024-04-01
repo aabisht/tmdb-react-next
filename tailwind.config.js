@@ -116,7 +116,7 @@ const config = {
         "2xl": "1440px",
       },
       fontFamily: {
-        sans: ["var(--font-roboto)"],
+        sans: ["Roboto", "var(--font-roboto)"],
       },
       colors: {
         transparent: "transparent",

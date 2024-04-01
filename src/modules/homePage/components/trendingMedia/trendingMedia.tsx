@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux";
 import { State } from "@type/store";
 import { ITrendingMediaResults } from "@type/commonTypes";
-import { TMDBBanner } from "@components/ui";
-import TMDBCardSlider from "@components/ui/TMDBCardSlider/TMDBCardSlider";
+import { TMDBBanner, TMDBCardSlider } from "@components/ui";
 import { TFunction } from "i18next";
 
 const TrendingMedia = ({ t }: { t: TFunction }) => {
