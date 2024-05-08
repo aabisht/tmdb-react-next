@@ -9,6 +9,7 @@ const rem = (px) => `${round(px / 16)}rem`;
 const em = (px, base) => `${round(px / base)}em`;
 
 const config = {
+  darkMode: ["selector", '[data-mode="dark"]'],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -105,6 +106,11 @@ const config = {
               fontWeight: theme("fontWeight.semibold"),
               transition: "color 0.25s cubic-bezier(.4,0,.2,1)",
             },
+          },
+        },
+        invert: {
+          css: {
+            backgroundColor: "var(--tw-prose-invert-body-bg)",
           },
         },
       }),

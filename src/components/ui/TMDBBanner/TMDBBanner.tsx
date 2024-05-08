@@ -38,7 +38,7 @@ export const TMDBBanner = ({
     return new Date(date || "").getFullYear();
   };
 
-  return bannerData.backdrop_path ? (
+  return bannerData?.backdrop_path ? (
     <div className="h-screen overflow-hidden relative">
       <div>
         <TMDBImg

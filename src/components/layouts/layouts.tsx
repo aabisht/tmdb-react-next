@@ -15,9 +15,11 @@ const Layouts = ({ children, metatags, t }: ILayoutProps) => {
   return (
     <>
       <HTMLHead pageTitle={metatags?.page_title} />
-      <div className={`tmdb ${useDarkThemeFlag ? "dark:tmdb-invert" : ""}`}>
-        <Header t={t} useDarkTheme={useDarkThemeFlag} />
-        {children}
+      <div data-mode={useDarkThemeFlag ? "dark" : "light"}>
+        <div className={`tmdb ${useDarkThemeFlag ? "dark:tmdb-invert" : ""}`}>
+          <Header t={t} useDarkTheme={useDarkThemeFlag} />
+          {children}
+        </div>
       </div>
     </>
   );

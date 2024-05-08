@@ -1,6 +1,15 @@
 import { render, fireEvent } from "@testing-library/react";
 import { TMDBPrevArrow } from "./TMDBPrevArrow";
 import { ARROW_TYPE } from "@constants";
+import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
+
+const middleware = [thunk];
+
+const initialState = {
+  themeName: "light",
+};
 
 // Fix for console.error Error: Could not parse CSS stylesheet
 // It is because of PRIMEREACT library
@@ -13,16 +22,27 @@ console.error = (...params) => {
   }
 };
 
-describe("TMDBPrevArrow", () => {
-  const defaultProps = {
-    className: "custom-class",
-    style: {},
-    onClick: jest.fn(),
-    arrowType: ARROW_TYPE.PREVIOUS,
-  };
+const defaultProps = {
+  className: "custom-class",
+  style: {},
+  onClick: jest.fn(),
+  arrowType: ARROW_TYPE.PREVIOUS,
+};
 
+const setup = (arrowType?: string) => {
+  const mockStore = configureStore(middleware);
+  const store = mockStore(initialState);
+
+  return render(
+    <Provider store={store}>
+      <TMDBPrevArrow {...defaultProps} arrowType={arrowType} />
+    </Provider>,
+  );
+};
+
+describe("TMDBPrevArrow", () => {
   it("renders previous arrow correctly", () => {
-    const { getByRole } = render(<TMDBPrevArrow {...defaultProps} />);
+    const { getByRole } = setup();
     const buttonElement = getByRole("button");
 
     expect(buttonElement).toBeInTheDocument();
@@ -30,9 +50,7 @@ describe("TMDBPrevArrow", () => {
   });
 
   it("renders next arrow correctly", () => {
-    const { getByRole } = render(
-      <TMDBPrevArrow {...defaultProps} arrowType={ARROW_TYPE.NEXT} />,
-    );
+    const { getByRole } = setup(ARROW_TYPE.NEXT);
     const buttonElement = getByRole("button");
 
     expect(buttonElement).toBeInTheDocument();
@@ -40,7 +58,7 @@ describe("TMDBPrevArrow", () => {
   });
 
   it("fires onClick event when clicked", () => {
-    const { getByRole } = render(<TMDBPrevArrow {...defaultProps} />);
+    const { getByRole } = setup();
     const buttonElement = getByRole("button");
 
     fireEvent.click(buttonElement);
