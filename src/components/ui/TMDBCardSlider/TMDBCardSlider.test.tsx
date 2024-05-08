@@ -1,6 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
 import { TMDBCardSlider } from "./TMDBCardSlider";
+
+const middleware = [thunk];
 
 jest.mock(
   "next/image",
@@ -28,6 +33,10 @@ jest.mock(
     ),
 );
 
+const initialState = {
+  themeName: "light",
+};
+
 // Fix for console.error Error: Could not parse CSS stylesheet
 // It is because of PRIMEREACT library
 // https://github.com/orgs/primefaces/discussions/410
@@ -40,6 +49,9 @@ console.error = (...params) => {
 };
 
 describe("TMDBCardSlider", () => {
+  const mockStore = configureStore(middleware);
+  const store = mockStore(initialState);
+
   const mockData = {
     siderData: [
       {
@@ -174,7 +186,11 @@ describe("TMDBCardSlider", () => {
   };
 
   it("renders slider title and link correctly", () => {
-    const { getByText } = render(<TMDBCardSlider {...mockData} />);
+    const { getByText } = render(
+      <Provider store={store}>
+        <TMDBCardSlider {...mockData} />
+      </Provider>,
+    );
     const titleElement = getByText("Trending Now");
     const linkElement = titleElement.parentElement;
 

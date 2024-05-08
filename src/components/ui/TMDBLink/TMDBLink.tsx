@@ -70,7 +70,7 @@ export const TMDBLink = ({
 
   return external ? (
     <a
-      href={typeof href === "string" ? href : ""}
+      href={typeof href === "string" ? href : "#"}
       target="_blank"
       rel="noreferrer"
       className={getClassName()}

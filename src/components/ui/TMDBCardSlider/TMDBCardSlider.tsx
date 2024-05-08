@@ -2,16 +2,24 @@ import { ITMDBCardSlider } from "@type/uiTypes";
 import React, { memo, useRef } from "react";
 import { TMDBButton, TMDBIcon, TMDBLink, TMDBPrevArrow } from "..";
 import TMDBCard from "../TMDBCard/TMDBCard";
-import { ARROW_TYPE, SCREENS } from "@constants";
+import { ARROW_TYPE, BUTTON_VARIANTS, SCREENS, THEME_NAME } from "@constants";
 import Slider from "react-slick";
 import "node_modules/slick-carousel/slick/slick.css";
 import style from "./TMDBCardSlider.module.css";
+import { useSelector } from "react-redux";
+import { State } from "@type/store";
 
 export const TMDBCardSlider = memo(function TMDBCardSlider({
   siderData,
   sliderTitle,
   sliderLink,
 }: ITMDBCardSlider) {
+  const theme = useSelector(
+    (state: State) => state?.themeSlice?.themeName as string,
+  );
+
+  const useDarkThemeFlag: boolean = theme === THEME_NAME.DARK;
+
   const slider = useRef<Slider>(null);
   const responsive = [
     {
@@ -50,7 +58,9 @@ export const TMDBCardSlider = memo(function TMDBCardSlider({
   };
 
   const customPaging = (index: number) => (
-    <TMDBButton className="w-3 h-[2px] block">
+    <TMDBButton
+      className={`w-3 h-[2px] block ${useDarkThemeFlag ? "dark-btn" : "light-btn"}`}
+    >
       <span className="hidden">{index + 1}</span>
     </TMDBButton>
   );
@@ -75,7 +85,12 @@ export const TMDBCardSlider = memo(function TMDBCardSlider({
             {sliderLink ? (
               <TMDBLink
                 href={sliderLink}
-                className="no-underline inline-flex items-center group-2"
+                className={`no-underline inline-flex items-center group-2`}
+                severity={
+                  useDarkThemeFlag
+                    ? BUTTON_VARIANTS.LIGHT
+                    : BUTTON_VARIANTS.DARK
+                }
               >
                 <>
                   <strong>{sliderTitle}</strong>

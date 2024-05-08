@@ -26,10 +26,18 @@
   @apply m-0 p-0 mx-[2px];
 }
 
-.card-slider :global .slick-dots-list li button {
+.card-slider :global .slick-dots-list li button.light-btn {
   @apply bg-black-light/40;
 }
 
-.card-slider :global .slick-dots-list li.slick-active button {
+.card-slider :global .slick-dots-list li.slick-active button.light-btn {
   @apply bg-black-light;
+}
+
+.card-slider :global .slick-dots-list li button.dark-btn {
+  @apply bg-white-dark/40;
+}
+
+.card-slider :global .slick-dots-list li.slick-active button.dark-btn {
+  @apply bg-white-dark;
 }

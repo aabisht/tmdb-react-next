@@ -75,7 +75,7 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
     () => ({
       root: () => ({
         className: classNames(
-          `cursor-pointer inline-flex relative select-none ${theme === THEME_NAME.DARK ? "dark-theme" : "light-theme"}`,
+          `cursor-pointer inline-flex relative select-none`,
         ),
       }),
       input: () => ({
@@ -85,11 +85,11 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
         className: classNames("flex items-center justify-center text-white"),
       },
       panel: () => ({
-        className: classNames("!left-auto right-0 min-w-[150px]"),
+        className: classNames(`!left-auto right-0 min-w-[150px] `),
       }),
       wrapper: {
         className: classNames(
-          "max-h-[200px] overflow-auto bg-white shadow-md border-0 ",
+          `max-h-[200px] overflow-auto shadow-md border-0 ${theme === THEME_NAME.DARK ? "bg-black-200" : "bg-white"}`,
         ),
       },
       list: {
@@ -108,7 +108,7 @@ const HeaderThemeSelector = ({ t }: { t: TFunction }) => {
     <TMDBButton
       aria-label={option.ariaLabel}
       title={option.ariaLabel}
-      className="w-[100%] inline-flex items-center px-3 py-2 hover:bg-white-darkest hover:text-secondary"
+      className={`w-[100%] inline-flex items-center px-3 py-2 hover:text-secondary hover:${theme === THEME_NAME.DARK ? "bg-black" : "bg-white-darkest"} ${theme === option?.code ? "text-secondary" : ""}`}
     >
       <TMDBIcon iconsName={option.icon} />
       <span className="ml-2">{option.name}</span>
