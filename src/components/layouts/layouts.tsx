@@ -5,6 +5,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { State } from "@type/store";
 import { THEME_NAME } from "@constants";
+import Footer from "@components/footer/footerComponent/footer";
 
 const Layouts = ({ children, metatags, t }: ILayoutProps) => {
   const theme = useSelector(
@@ -19,6 +20,7 @@ const Layouts = ({ children, metatags, t }: ILayoutProps) => {
         <div className={`tmdb ${useDarkThemeFlag ? "dark:tmdb-invert" : ""}`}>
           <Header t={t} useDarkTheme={useDarkThemeFlag} />
           {children}
+          <Footer />
         </div>
       </div>
     </>
