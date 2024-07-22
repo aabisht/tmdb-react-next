@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
-import TMDBImg from "./TMDBImg";
 import { getBaseURL } from "@utils/apiHelper";
+import { TMDBImg } from "./TMDBImg";
 
 jest.mock(
   "next/image",

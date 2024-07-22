@@ -23,7 +23,10 @@
   },
   "ui": {
     "TMDBBanner": {
-      "moreInfo": "More Info"
+      "more_info": "More Info"
+    },
+    "TMDBCard": {
+      "view_media_label": "View {{mediaName}}"
     }
   },
   "homePage": {

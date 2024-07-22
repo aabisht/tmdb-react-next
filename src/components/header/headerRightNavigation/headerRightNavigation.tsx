@@ -5,15 +5,15 @@ import { TMDBIcon } from "@components/ui";
 
 const HeaderRightNavigation = ({ t }: { t: TFunction }) => {
   const icons = [
-    { name: "search", isOutline: true },
-    { name: "translate", isOutline: true },
-    { name: "account_circle", isOutline: true },
+    { name: "search", isOutline: true, id: 0 },
+    { name: "translate", isOutline: true, id: 1 },
+    { name: "account_circle", isOutline: true, id: 2 },
   ];
 
   return (
     <ul className="flex justify-start content-center mt-0 mb-0 pl-0 list-none">
-      {icons.map((icon, index) => (
-        <li key={index} className="mr-4 mt-0 mb-0 pl-0">
+      {icons.map((icon) => (
+        <li key={icon.id} className="mr-4 mt-0 mb-0 pl-0">
           <TMDBIcon
             isOutline={true}
             iconsName={icon.name}

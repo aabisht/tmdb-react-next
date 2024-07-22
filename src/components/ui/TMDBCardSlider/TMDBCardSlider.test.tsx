@@ -7,6 +7,27 @@ import { TMDBCardSlider } from "./TMDBCardSlider";
 
 const middleware = [thunk];
 
+jest.mock("react-i18next", () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useTranslation: () => {
+    return {
+      t: (str: string) => str,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
+
+jest.mock("next/router", () => ({
+  // this mock makes sure any components using the translate hook can use it without a warning being shown
+  useRouter: () => {
+    return {
+      locale: "en",
+    };
+  },
+}));
+
 jest.mock(
   "next/image",
   () =>
@@ -182,6 +203,7 @@ describe("TMDBCardSlider", () => {
       },
     ],
     sliderTitle: "Trending Now",
+    sliderId: "trendingMediaSLider",
     sliderLink: "/browse/all/trending/now",
   };
 

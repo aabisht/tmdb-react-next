@@ -1,8 +1,5 @@
 import { TrendingMediaService } from "@services/trendingMediaService";
-import {
-  ITrendingMediaResponse,
-  ITrendingMediaResults,
-} from "@type/commonTypes";
+import { ITrendingMediaResponse, IMediaResults } from "@type/commonTypes";
 import { Dispatch } from "react";
 import { AnyAction } from "redux";
 import { setTrendingMediaResults } from "./slice";
@@ -10,7 +7,7 @@ import { setTrendingMediaResults } from "./slice";
 export const fetchTrendingMedia = (totalSliderItems: number) => {
   return async (dispatch: Dispatch<AnyAction>) => {
     try {
-      let trendingMediaData: ITrendingMediaResults[] = [];
+      let trendingMediaData: IMediaResults[] = [];
       const movieResp: ITrendingMediaResponse = (
         await TrendingMediaService.getTrendingMovies()
       ).data;
@@ -18,12 +15,19 @@ export const fetchTrendingMedia = (totalSliderItems: number) => {
         await TrendingMediaService.getTrendingTV()
       ).data;
 
-      movieResp.results.every((item, index) => {
+      const filteredMovies = movieResp.results.filter(
+        (movie) => movie.vote_average >= 7 && movie.overview.length > 0,
+      );
+      const filteredTv = tvResp.results.filter(
+        (tv) => tv.vote_average >= 7 && tv.overview.length > 0,
+      );
+
+      filteredMovies.every((item, index) => {
         if (index >= totalSliderItems / 2) return false;
         return trendingMediaData.push(item);
       });
 
-      tvResp.results.every((item, index) => {
+      filteredTv.every((item, index) => {
         if (index >= totalSliderItems / 2) return false;
         return trendingMediaData.push(item);
       });

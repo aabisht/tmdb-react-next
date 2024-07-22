@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  ITrendingMediaResponse,
-  ITrendingMediaResults,
-} from "@type/commonTypes";
+import { ITrendingMediaResponse, IMediaResults } from "@type/commonTypes";
 
 const initialState: ITrendingMediaResponse = {
-  results: [] as ITrendingMediaResults[],
+  results: [] as IMediaResults[],
   page: 0,
   total_pages: 0,
   total_results: 0,
@@ -17,7 +14,7 @@ const trendingMediaSlice = createSlice({
   reducers: {
     setTrendingMediaResults: (
       state,
-      action: PayloadAction<ITrendingMediaResults[]>,
+      action: PayloadAction<IMediaResults[]>,
     ) => {
       state.results = action.payload;
     },

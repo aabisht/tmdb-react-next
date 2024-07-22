@@ -1,7 +1,7 @@
 import { LinkProps } from "next/link";
 import { ButtonProps } from "primereact/button";
 import { ReactElement } from "react";
-import { ITrendingMediaResults } from "./commonTypes";
+import { IMediaResults } from "./commonTypes";
 
 export interface ITMDBIcon {
   isOutline?: boolean;
@@ -32,7 +32,14 @@ export interface ITMDBLink extends LinkProps {
 }
 
 export interface ITMDBCardSlider {
-  siderData: ITrendingMediaResults[];
+  siderData: IMediaResults[];
+  sliderId: string;
   sliderTitle?: string;
   sliderLink?: string;
+}
+
+export interface ITMDBGenre {
+  genreId: number;
+  mediaType: string;
+  className?: string;
 }

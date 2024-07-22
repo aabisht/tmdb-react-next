@@ -1,13 +1,12 @@
 import { useSelector } from "react-redux";
 import { State } from "@type/store";
-import { ITrendingMediaResults } from "@type/commonTypes";
+import { IMediaResults } from "@type/commonTypes";
 import { TMDBBanner, TMDBCardSlider } from "@components/ui";
 import { TFunction } from "i18next";
 
 const TrendingMedia = ({ t }: { t: TFunction }) => {
-  const trendingMediaResults: ITrendingMediaResults[] = useSelector(
-    (state: State) =>
-      state?.trendingMediaSlice?.results as ITrendingMediaResults[],
+  const trendingMediaResults: IMediaResults[] = useSelector(
+    (state: State) => state?.trendingMediaSlice?.results as IMediaResults[],
   );
 
   return (
@@ -17,6 +16,7 @@ const TrendingMedia = ({ t }: { t: TFunction }) => {
         siderData={trendingMediaResults}
         sliderTitle={t("homePage.TrendingMedia.title")}
         sliderLink="/browse/all/trending/now"
+        sliderId="trendingMediaSLider"
       />
     </>
   );

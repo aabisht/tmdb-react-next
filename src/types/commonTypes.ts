@@ -21,12 +21,12 @@ export interface ITrendingRequestParam {
 
 export interface ITrendingMediaResponse {
   page: number;
-  results: ITrendingMediaResults[];
+  results: IMediaResults[];
   total_pages: number;
   total_results: number;
 }
 
-export interface ITrendingMediaResults {
+export interface IMediaResults {
   adult: boolean;
   backdrop_path: string;
   id: number;
@@ -49,6 +49,8 @@ export interface ITrendingMediaResults {
 
 export interface IConfiguration {
   apiConfiguration: IAPIConfiguration;
+  genresMovieList: IGenreList;
+  genresTVList: IGenreList;
 }
 
 export interface IAPIConfiguration {
@@ -64,6 +66,15 @@ export interface IAPIConfiguration {
   change_keys: string[];
 }
 
+export interface IGenre {
+  id: number;
+  name: string;
+}
+
+export interface IGenreList {
+  genres: IGenre[];
+}
+
 export interface ITMDBImg {
   path: string;
   alt: string;
@@ -72,4 +83,15 @@ export interface ITMDBImg {
   height: number;
   quality?: number;
   className?: string;
+}
+
+export interface IClientRects {
+  bottom?: number;
+  height?: number;
+  left?: number;
+  right?: number;
+  top?: number;
+  width?: number;
+  x?: number;
+  y?: number;
 }

@@ -38,6 +38,7 @@ export const API_BASE_URL: { [key: string]: string } = {
   discover: `${getAPIURL()}/discover`,
   find: `${getAPIURL()}/find`,
   trending: `${getAPIURL()}/trending`,
+  genres: `${getAPIURL()}/genre`,
 };
 
 export const API_ROUTES = {
@@ -259,6 +260,12 @@ export const API_ROUTES = {
       `${API_BASE_URL.trending}/tv/${timeWindow}${getAPIKey()}${getLanguage(
         language,
       )}${getPageNumber(pageNumber)}`,
+  },
+  GENRES: {
+    getMovieList: ({ language = "en-US" }: ITrendingRequestParam) =>
+      `${API_BASE_URL.genres}/movie/list${getAPIKey()}${getLanguage(language)}`,
+    getTVList: ({ language = "en-US" }: ITrendingRequestParam) =>
+      `${API_BASE_URL.genres}/tv/list${getAPIKey()}${getLanguage(language)}`,
   },
 };
 
