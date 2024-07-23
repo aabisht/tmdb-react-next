@@ -16,6 +16,9 @@ export const TMDBLink = memo(
     link = true,
     outline = false,
     rounded = false,
+    title,
+    tabIndex,
+    ...rest
   }: ITMDBLink) => {
     const getSeverityClassName = (): string => {
       return link
@@ -76,6 +79,9 @@ export const TMDBLink = memo(
         target="_blank"
         rel="noreferrer"
         className={getClassName()}
+        title={title}
+        tabIndex={tabIndex}
+        {...rest}
       >
         {children}
       </a>
@@ -86,6 +92,9 @@ export const TMDBLink = memo(
         scroll={scroll}
         prefetch={prefetch}
         className={getClassName()}
+        title={title}
+        tabIndex={tabIndex}
+        {...rest}
       >
         {children}
       </Link>

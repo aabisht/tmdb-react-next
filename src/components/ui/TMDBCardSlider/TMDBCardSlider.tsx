@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { State } from "@type/store";
 
 export const TMDBCardSlider = memo(
-  ({ siderData, sliderTitle, sliderLink, sliderId }: ITMDBCardSlider) => {
+  ({ siderData, sliderTitle, sliderLink, sliderId, t }: ITMDBCardSlider) => {
     const theme = useSelector(
       (state: State) => state?.themeSlice?.themeName as string,
     );
@@ -113,7 +113,7 @@ export const TMDBCardSlider = memo(
           <Slider ref={slider} {...sliderSettings}>
             {siderData.map((slide, index) => (
               <div className="px-2 h-full" key={index}>
-                <TMDBCard cardData={slide} cardId={sliderId} />
+                <TMDBCard cardData={slide} cardId={sliderId} t={t} />
               </div>
             ))}
           </Slider>

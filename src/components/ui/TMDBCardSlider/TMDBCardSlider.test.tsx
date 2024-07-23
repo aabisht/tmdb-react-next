@@ -4,6 +4,7 @@ import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { TMDBCardSlider } from "./TMDBCardSlider";
+import { useTranslation } from "next-i18next";
 
 const middleware = [thunk];
 
@@ -72,6 +73,7 @@ console.error = (...params) => {
 describe("TMDBCardSlider", () => {
   const mockStore = configureStore(middleware);
   const store = mockStore(initialState);
+  const { t } = useTranslation("common");
 
   const mockData = {
     siderData: [
@@ -210,7 +212,7 @@ describe("TMDBCardSlider", () => {
   it("renders slider title and link correctly", () => {
     const { getByText } = render(
       <Provider store={store}>
-        <TMDBCardSlider {...mockData} />
+        <TMDBCardSlider t={t} {...mockData} />
       </Provider>,
     );
     const titleElement = getByText("Trending Now");

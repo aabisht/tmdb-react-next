@@ -1,7 +1,7 @@
 import { LinkProps } from "next/link";
 import { ButtonProps } from "primereact/button";
-import { ReactElement } from "react";
 import { IMediaResults } from "./commonTypes";
+import { TFunction } from "i18next";
 
 export interface ITMDBIcon {
   isOutline?: boolean;
@@ -22,13 +22,15 @@ export interface ITMDBImage {
 export interface ITMDBButton extends ButtonProps {}
 
 export interface ITMDBLink extends LinkProps {
-  children: ReactElement | string | undefined;
+  children: React.ReactNode | string | undefined;
   className?: string;
   external?: boolean;
   severity?: string;
   link?: boolean;
   outline?: boolean;
   rounded?: boolean;
+  title?: string;
+  tabIndex?: number;
 }
 
 export interface ITMDBCardSlider {
@@ -36,10 +38,34 @@ export interface ITMDBCardSlider {
   sliderId: string;
   sliderTitle?: string;
   sliderLink?: string;
+  t: TFunction;
 }
 
 export interface ITMDBGenre {
   genreId: number;
   mediaType: string;
   className?: string;
+  tabIndex?: number;
+  t: TFunction;
+}
+
+export interface ITMDBCard {
+  cardData: IMediaResults;
+  cardId: string;
+  t: TFunction;
+}
+
+export interface ITMDBCardDialogInfo {
+  cardData: IMediaResults;
+  href: string;
+  useDarkThemeFlag: boolean;
+  t: TFunction;
+}
+
+export interface ITMDBGenresList {
+  genreIds: number[];
+  mediaType: string;
+  useDarkThemeFlag: boolean;
+  genreToShow: number;
+  t: TFunction;
 }
