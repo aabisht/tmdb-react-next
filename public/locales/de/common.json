@@ -27,6 +27,10 @@
     },
     "TMDBCard": {
       "view_media_label": "Sicht {{mediaName}}"
+    },
+    "TMDBGenre": {
+      "view_genre_related_movie": "Bekijk films gerelateerd aan {{genreName}}",
+      "view_genre_related_tv": "Bekijk tv-programma's gerelateerd aan {{genreName}}"
     }
   },
   "homePage": {

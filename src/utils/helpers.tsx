@@ -22,3 +22,10 @@ export const getMediaIconName = (mediaType: string): string => {
       return "";
   }
 };
+
+export const replaceSpaceWithDash = (name: string): string => {
+  return name
+    .replace(/ /g, "-")
+    .replace(/[ :[\]/]/g, "")
+    .toLowerCase();
+};

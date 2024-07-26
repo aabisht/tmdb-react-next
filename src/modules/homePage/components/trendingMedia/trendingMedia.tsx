@@ -17,6 +17,7 @@ const TrendingMedia = ({ t }: { t: TFunction }) => {
         sliderTitle={t("homePage.TrendingMedia.title")}
         sliderLink="/browse/all/trending/now"
         sliderId="trendingMediaSLider"
+        t={t}
       />
     </>
   );
