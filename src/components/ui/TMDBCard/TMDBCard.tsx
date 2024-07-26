@@ -36,6 +36,7 @@ export const TMDBCard = memo(({ cardData, cardId, t }: ITMDBCard) => {
       onMouseLeave={handleMouseLeave}
       title={mediaTitle}
       id={`${cardId}-${cardData?.id}`}
+      data-testid={`${cardId}-${cardData?.id}`}
     >
       <TMDBLink
         href={getMediaHref()}

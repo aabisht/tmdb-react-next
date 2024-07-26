@@ -17,6 +17,7 @@ export const TMDBCardDialogInfo = memo(
       <div
         className={`p-2 pb-3 flex-auto h-full ${useDarkThemeFlag ? "bg-black-light text-white" : "bg-white text-black-light"}`}
         tabIndex={-1}
+        data-testid="TMDBCardDialogInfo"
       >
         <div className="flex flex-col justify-between items-stretch h-full">
           <div>

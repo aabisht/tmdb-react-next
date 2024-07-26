@@ -1,6 +1,6 @@
 import { ITMDBGenresList } from "@type/uiTypes";
 import { memo } from "react";
-import { TMDBGenre } from "../TMDBGenre/TMDBGenre";
+import { TMDBGenre } from "..";
 
 export const TMDBGenresList = memo(
   ({
@@ -18,6 +18,7 @@ export const TMDBGenresList = memo(
           <li
             key={genreId}
             className="m-0 p-0 relative mr-[10px] last:mr-0 pl-[20px] first:pl-0 first:before:hidden before:content-['●'] before:opacity-50 before:absolute before:left-0 before:top-[1px] before:leading-none"
+            data-testid="tmdb-genre"
           >
             <TMDBGenre
               genreId={genreId}
