@@ -69,3 +69,8 @@ export interface ITMDBGenresList {
   genreToShow: number;
   t: TFunction;
 }
+
+export interface ITMDBBanner {
+  backdropPath: string;
+  alt: string;
+}

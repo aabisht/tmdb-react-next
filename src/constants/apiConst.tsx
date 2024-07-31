@@ -1,5 +1,4 @@
 import {
-  getAPIKey,
   getAPIURL,
   getExternalSource,
   getIncludeAdult,
@@ -16,7 +15,15 @@ import {
 } from "@utils/apiHelper";
 import { SORT_BY, TIME_WINDOW } from "./frontendConst";
 import { IFilterParameter } from "@type/apiTypes";
-import { ITrendingRequestParam } from "@type/commonTypes";
+import {
+  IMovieAccountStatesParam,
+  IMovieAddRatingParam,
+  IMovieParam,
+  IMovieReviewsParam,
+  IMovieSimilarParam,
+  ITrendingRequestParam,
+  ITVParam,
+} from "@type/commonTypes";
 
 export const API_TYPE: {
   [key: string]: string;
@@ -39,13 +46,15 @@ export const API_BASE_URL: { [key: string]: string } = {
   find: `${getAPIURL()}/find`,
   trending: `${getAPIURL()}/trending`,
   genres: `${getAPIURL()}/genre`,
+  movie: `${getAPIURL()}/movie`,
+  tv: `${getAPIURL()}/tv`,
 };
 
 export const API_ROUTES = {
   ACCOUNT: {
     // Get your account details.
     getAccountDetail: (sessionId: string) =>
-      `${API_BASE_URL.account}${getAPIKey()}${getSessionID(sessionId)}`,
+      `${API_BASE_URL.account}?${getSessionID(sessionId)}`,
 
     // Get all of the lists created by an account. Will invlude private lists if you are the owner.
     getCreatedLists: ({
@@ -57,7 +66,7 @@ export const API_ROUTES = {
       language?: string;
       page?: number;
     }) =>
-      `${API_BASE_URL.account}/lists${getAPIKey()}${getLanguage(
+      `${API_BASE_URL.account}/lists?${getLanguage(
         language,
       )}${getSessionID(sessionId)}${getPageNumber(page)}`,
 
@@ -75,15 +84,13 @@ export const API_ROUTES = {
       page?: number;
       sortBy?: string;
     }) =>
-      `${API_BASE_URL.account}/favorite/${mediaType}${getAPIKey()}${getLanguage(
+      `${API_BASE_URL.account}/favorite/${mediaType}?${getLanguage(
         language,
       )}${getSessionID(sessionId)}${getSortBy(sortBy)}${getPageNumber(page)}`,
 
     // This allows you to mark a movie or TV show as a favorite item.
     markAsFavorite: (sessionId: string) =>
-      `${API_BASE_URL.account}/favorite${getAPIKey()}${getSessionID(
-        sessionId,
-      )}`,
+      `${API_BASE_URL.account}/favorite?${getSessionID(sessionId)}`,
 
     // Get a list of all the movies, TV shows and TV episodes user have rated.
     getRated: ({
@@ -105,7 +112,7 @@ export const API_ROUTES = {
     }) =>
       `${API_BASE_URL.account}/${accountID}/rated/${mediaType}${
         episodes ? "/episodes" : ""
-      }${getAPIKey()}${getLanguage(language)}${getSessionID(
+      }?${getLanguage(language)}${getSessionID(
         sessionId,
       )}${getSortBy(sortBy)}${getPageNumber(page)}`,
 
@@ -127,7 +134,7 @@ export const API_ROUTES = {
     }) =>
       `${
         API_BASE_URL.account
-      }/${accountID}/watchlist/${mediaType}${getAPIKey()}${getLanguage(
+      }/${accountID}/watchlist/${mediaType}?${getLanguage(
         language,
       )}${getSessionID(sessionId)}${getSortBy(sortBy)}${getPageNumber(page)}`,
 
@@ -141,20 +148,18 @@ export const API_ROUTES = {
     }) =>
       `${
         API_BASE_URL.account
-      }/${accountID}/watchlist${getAPIKey()}${getSessionID(sessionId)}`,
+      }/${accountID}/watchlist?${getSessionID(sessionId)}`,
   },
   AUTHENTICATION: {
-    getRequestToken: () =>
-      `${API_BASE_URL.authentication}/token/new${getAPIKey()}`,
-    createSession: () =>
-      `${API_BASE_URL.authentication}/session/new${getAPIKey()}`,
+    getRequestToken: () => `${API_BASE_URL.authentication}/token/new`,
+    createSession: () => `${API_BASE_URL.authentication}/session/new`,
     createSessionWithLogin: () =>
-      `${API_BASE_URL.authentication}/token/validate_with_login${getAPIKey()}`,
-    deleteSession: () => `${API_BASE_URL.authentication}/session${getAPIKey()}`,
+      `${API_BASE_URL.authentication}/token/validate_with_login`,
+    deleteSession: () => `${API_BASE_URL.authentication}/session`,
   },
   CERTIFICATION: {
     getMediaCertifications: (mediaType: string) =>
-      `${API_BASE_URL.certification}/${mediaType}/list${getAPIKey()}`,
+      `${API_BASE_URL.certification}/${mediaType}/list`,
   },
   COLLECTION: {
     getDetails: ({
@@ -163,10 +168,7 @@ export const API_ROUTES = {
     }: {
       collectionId: string;
       language?: string;
-    }) =>
-      `${API_BASE_URL.collection}/${collectionId}${getAPIKey()}${getLanguage(
-        language,
-      )}`,
+    }) => `${API_BASE_URL.collection}/${collectionId}?${getLanguage(language)}`,
     getImages: ({
       collectionId,
       language = "en-US",
@@ -176,7 +178,7 @@ export const API_ROUTES = {
     }) =>
       `${
         API_BASE_URL.collection
-      }/${collectionId}/images${getAPIKey()}${getLanguage(language)}`,
+      }/${collectionId}/images?${getLanguage(language)}`,
     getTranslations: ({
       collectionId,
       language = "en-US",
@@ -186,20 +188,20 @@ export const API_ROUTES = {
     }) =>
       `${
         API_BASE_URL.collection
-      }/${collectionId}/translations${getAPIKey()}${getLanguage(language)}`,
+      }/${collectionId}/translations?${getLanguage(language)}`,
   },
   CONFIGURATION: {
-    getAPIConfiguration: () => `${API_BASE_URL.configuration}${getAPIKey()}`,
-    getCountries: () => `${API_BASE_URL.configuration}/countries${getAPIKey()}`,
-    getJobs: () => `${API_BASE_URL.configuration}/jobs${getAPIKey()}`,
-    getLanguages: () => `${API_BASE_URL.configuration}/languages${getAPIKey()}`,
+    getAPIConfiguration: () => `${API_BASE_URL.configuration}`,
+    getCountries: () => `${API_BASE_URL.configuration}/countries`,
+    getJobs: () => `${API_BASE_URL.configuration}/jobs`,
+    getLanguages: () => `${API_BASE_URL.configuration}/languages`,
     getPrimaryTranslations: () =>
-      `${API_BASE_URL.configuration}/primary_translations${getAPIKey()}`,
-    getTimezones: () => `${API_BASE_URL.configuration}/timezones${getAPIKey()}`,
+      `${API_BASE_URL.configuration}/primary_translations`,
+    getTimezones: () => `${API_BASE_URL.configuration}/timezones`,
   },
   CREDIT: {
     getCreditDetails: (creditId: string) =>
-      `${API_BASE_URL.credit}/${creditId}${getAPIKey()}`,
+      `${API_BASE_URL.credit}/${creditId}`,
   },
   DISCOVER: {
     getMediaDiscover: ({
@@ -209,7 +211,7 @@ export const API_ROUTES = {
       mediaType: string;
       filterParameter?: IFilterParameter;
     }) =>
-      `${API_BASE_URL.discover}/${mediaType}${getAPIKey()}${
+      `${API_BASE_URL.discover}/${mediaType}?${
         filterParameter && getFilterParameterURL(filterParameter)
       }`,
   },
@@ -223,7 +225,7 @@ export const API_ROUTES = {
       externalSource: string;
       language?: string;
     }) =>
-      `${API_BASE_URL.find}/${externalId}${getAPIKey()}${getLanguage(
+      `${API_BASE_URL.find}/${externalId}?${getLanguage(
         language,
       )}${getExternalSource(externalSource)}`,
   },
@@ -233,7 +235,7 @@ export const API_ROUTES = {
       language = "en-US",
       pageNumber = 1,
     }: ITrendingRequestParam) =>
-      `${API_BASE_URL.trending}/all/${timeWindow}${getAPIKey()}${getLanguage(
+      `${API_BASE_URL.trending}/all/${timeWindow}?${getLanguage(
         language,
       )}${getPageNumber(pageNumber)}`,
     getTrendingMovies: ({
@@ -241,7 +243,7 @@ export const API_ROUTES = {
       language = "en-US",
       pageNumber = 1,
     }: ITrendingRequestParam) =>
-      `${API_BASE_URL.trending}/movie/${timeWindow}${getAPIKey()}${getLanguage(
+      `${API_BASE_URL.trending}/movie/${timeWindow}?${getLanguage(
         language,
       )}${getPageNumber(pageNumber)}`,
     getTrendingPeople: ({
@@ -249,7 +251,7 @@ export const API_ROUTES = {
       language = "en-US",
       pageNumber = 1,
     }: ITrendingRequestParam) =>
-      `${API_BASE_URL.trending}/person/${timeWindow}${getAPIKey()}${getLanguage(
+      `${API_BASE_URL.trending}/person/${timeWindow}?${getLanguage(
         language,
       )}${getPageNumber(pageNumber)}`,
     getTrendingTV: ({
@@ -257,15 +259,57 @@ export const API_ROUTES = {
       language = "en-US",
       pageNumber = 1,
     }: ITrendingRequestParam) =>
-      `${API_BASE_URL.trending}/tv/${timeWindow}${getAPIKey()}${getLanguage(
+      `${API_BASE_URL.trending}/tv/${timeWindow}?${getLanguage(
         language,
       )}${getPageNumber(pageNumber)}`,
   },
   GENRES: {
     getMovieList: ({ language = "en-US" }: ITrendingRequestParam) =>
-      `${API_BASE_URL.genres}/movie/list${getAPIKey()}${getLanguage(language)}`,
+      `${API_BASE_URL.genres}/movie/list?${getLanguage(language)}`,
     getTVList: ({ language = "en-US" }: ITrendingRequestParam) =>
-      `${API_BASE_URL.genres}/tv/list${getAPIKey()}${getLanguage(language)}`,
+      `${API_BASE_URL.genres}/tv/list?${getLanguage(language)}`,
+  },
+  MOVIES: {
+    getDetails: ({ movieId, language = "en-US" }: IMovieParam) =>
+      `${API_BASE_URL.movie}/${movieId}?${getLanguage(language)}`,
+    getAccountStates: ({
+      movieId,
+      sessionId,
+      language = "en-US",
+    }: IMovieAccountStatesParam) =>
+      `${API_BASE_URL.movie}/${movieId}/account_states?${getSessionID(sessionId)}${getLanguage(language)}`,
+    getAlternativeTitles: ({ movieId, language = "en-US" }: IMovieParam) =>
+      `${API_BASE_URL.movie}/${movieId}/alternative_titles?${getLanguage(language)}`,
+    getCredits: ({ movieId, language = "en-US" }: IMovieParam) =>
+      `${API_BASE_URL.movie}/${movieId}/credits?${getLanguage(language)}`,
+    getExternalIDs: ({ movieId }: { movieId: number }) =>
+      `${API_BASE_URL.movie}/${movieId}/credits`,
+    getKeywords: ({ movieId }: { movieId: number }) =>
+      `${API_BASE_URL.movie}/${movieId}/keywords`,
+    getReleaseDates: ({ movieId }: { movieId: number }) =>
+      `${API_BASE_URL.movie}/${movieId}/release_dates`,
+    getReviews: ({
+      movieId,
+      pageNumber = 1,
+      language = "en-US",
+    }: IMovieReviewsParam) =>
+      `${API_BASE_URL.movie}/${movieId}/reviews?${getLanguage(language)}${getPageNumber(pageNumber)}`,
+    getSimilar: ({
+      movieId,
+      pageNumber = 1,
+      language = "en-US",
+    }: IMovieSimilarParam) =>
+      `${API_BASE_URL.movie}/${movieId}/similar?${getLanguage(language)}${getPageNumber(pageNumber)}`,
+    getVideos: ({ movieId, language = "en-US" }: IMovieParam) =>
+      `${API_BASE_URL.movie}/${movieId}/videos?${getLanguage(language)}`,
+    getWatchProviders: ({ movieId }: { movieId: number }) =>
+      `${API_BASE_URL.movie}/${movieId}/watch/providers`,
+    postAddRating: ({ movieId, sessionId }: IMovieAddRatingParam) =>
+      `${API_BASE_URL.movie}/${movieId}/rating?${getSessionID(sessionId)}`,
+  },
+  TV_SERIES: {
+    getDetails: ({ seriesId, language = "en-US" }: ITVParam) =>
+      `${API_BASE_URL.tv}/${seriesId}?${getLanguage(language)}`,
   },
 };
 

@@ -1,4 +1,5 @@
 export * from "./TMDBBanner/TMDBBanner";
+export * from "./TMDBBannerBackground/TMDBBannerBackground";
 export * from "./TMDBButton/TMDBButton";
 export * from "./TMDBCard/TMDBCard";
 export * from "./TMDBCardDialogInfo/TMDBCardDialogInfo";

@@ -1,4 +1,5 @@
 import { MEDIA } from "@constants";
+import { IMediaResults, IMediaRuntime } from "@type/commonTypes";
 
 export const getMediaYear = (date: string): number => {
   return new Date(date || "").getFullYear();
@@ -28,4 +29,28 @@ export const replaceSpaceWithDash = (name: string): string => {
     .replace(/ /g, "-")
     .replace(/[ :[\]/]/g, "")
     .toLowerCase();
+};
+
+export const getMediaHref = (cardData: IMediaResults) => {
+  const mediaTitle = (cardData?.title ?? cardData?.name) as string;
+  return `${cardData?.media_type}/${cardData?.id}-${replaceSpaceWithDash(mediaTitle)}`;
+};
+
+export const getMediaId = (pageName: string): number => {
+  return parseInt(pageName.split("-")[0]);
+};
+
+export const convertMinutes = (minutes: number): IMediaRuntime => {
+  const minutesPerDay = 1440;
+  const minutesPerHour = 60;
+
+  const days = Math.floor(minutes / minutesPerDay);
+
+  const remainingMinutesAfterDays = minutes % minutesPerDay;
+
+  const hours = Math.floor(remainingMinutesAfterDays / minutesPerHour);
+
+  const remainingMinutes = remainingMinutesAfterDays % minutesPerHour;
+
+  return { days, hours, minutes: remainingMinutes };
 };
