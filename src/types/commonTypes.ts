@@ -95,3 +95,33 @@ export interface IClientRects {
   x?: number;
   y?: number;
 }
+
+export interface IMovieParam {
+  movieId: number;
+  language?: string;
+}
+
+export interface IMovieAccountStatesParam extends IMovieParam {
+  sessionId: string;
+}
+export interface IMovieReviewsParam extends IMovieParam {
+  pageNumber?: number;
+}
+
+export interface IMovieSimilarParam extends IMovieReviewsParam {}
+
+export interface IMovieAddRatingParam {
+  movieId: number;
+  sessionId: string;
+}
+
+export interface IMediaRuntime {
+  days: number;
+  hours: number;
+  minutes: number;
+}
+
+export interface ITVParam {
+  seriesId: number;
+  language?: string;
+}

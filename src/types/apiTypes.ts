@@ -1,6 +1,4 @@
-export type IApiData = any;
-
-export type IFilterParameter = {
+export interface IFilterParameter {
   includeAdult?: boolean;
   includeVideo?: boolean;
   language?: string;
@@ -11,4 +9,4 @@ export type IFilterParameter = {
   withWatchMonetizationTypes?: string;
   withWatchProviders?: string;
   withGenres?: string;
-};
+}

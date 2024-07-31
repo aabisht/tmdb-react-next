@@ -3,7 +3,7 @@ import { POSTER_SIZES, THEME_NAME } from "@constants";
 import { useSelector } from "react-redux";
 import { State } from "@type/store";
 import { TMDBCardDialogInfo, TMDBImg, TMDBLink } from "..";
-import { replaceSpaceWithDash } from "@utils/helpers";
+import { getMediaHref } from "@utils/helpers";
 import { ITMDBCard } from "@type/uiTypes";
 
 export const TMDBCard = memo(({ cardData, cardId, t }: ITMDBCard) => {
@@ -22,11 +22,6 @@ export const TMDBCard = memo(({ cardData, cardId, t }: ITMDBCard) => {
   const handleMouseEnter = useCallback(() => setIsHovered(true), []);
   const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
-  const getMediaHref = useCallback(() => {
-    const mediaTitle = (cardData?.title ?? cardData?.name) as string;
-    return `${cardData?.media_type}/${cardData?.id}-${replaceSpaceWithDash(mediaTitle)}`;
-  }, [cardData]);
-
   const mediaTitle = (cardData?.title ?? cardData?.name) as string;
 
   return (
@@ -39,7 +34,7 @@ export const TMDBCard = memo(({ cardData, cardId, t }: ITMDBCard) => {
       data-testid={`${cardId}-${cardData?.id}`}
     >
       <TMDBLink
-        href={getMediaHref()}
+        href={getMediaHref(cardData)}
         className="h-full block no-underline"
         aria-haspopup="true"
         aria-expanded={isHovered}
@@ -64,7 +59,7 @@ export const TMDBCard = memo(({ cardData, cardId, t }: ITMDBCard) => {
         <TMDBCardDialogInfo
           cardData={cardData}
           useDarkThemeFlag={useDarkThemeFlag}
-          href={getMediaHref()}
+          href={getMediaHref(cardData)}
           t={t}
         />
       </div>

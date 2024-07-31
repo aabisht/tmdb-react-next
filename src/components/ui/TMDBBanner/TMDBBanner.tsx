@@ -1,8 +1,8 @@
 import { IMediaResults } from "@type/commonTypes";
-import { BACKDROP_SIZES, BUTTON_VARIANTS, MEDIA } from "@constants";
-import { TMDBIcon, TMDBImg, TMDBLink } from "..";
+import { BUTTON_VARIANTS, MEDIA } from "@constants";
+import { TMDBIcon, TMDBLink, TMDBBannerBackground } from "..";
 import { useTranslation } from "next-i18next";
-import { getMediaIconName, getMediaYear } from "@utils/helpers";
+import { getMediaHref, getMediaIconName, getMediaYear } from "@utils/helpers";
 import { memo } from "react";
 
 export const TMDBBanner = memo(
@@ -20,20 +20,10 @@ export const TMDBBanner = memo(
 
     return bannerData?.backdrop_path ? (
       <div className="h-screen overflow-hidden relative">
-        <div>
-          <TMDBImg
-            path={bannerData.backdrop_path}
-            alt={bannerData.title || bannerData.name || ""}
-            imgType={BACKDROP_SIZES.W1280}
-            width={1280}
-            height={720}
-            className="absolute left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 max-w-none min-w-full min-h-full z-[1] object-cover"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 w-full h-full z-[2] bg-banner-gradient from-black/60 from-0% to-transparent to-[102%]"
-          ></div>
-        </div>
+        <TMDBBannerBackground
+          backdropPath={bannerData.backdrop_path}
+          alt={bannerData.title || bannerData.name || ""}
+        />
         <div className="relative h-full flex items-end z-[3] pb-[10vh]">
           <div className="container xl:px-8 relative xl:pr-0 pr-0 flex justify-between items-end">
             <div className="xl:pr-16 lg:pr-8">
@@ -49,7 +39,7 @@ export const TMDBBanner = memo(
                 </h2>
                 <p className="line-clamp-3">{bannerData.overview}</p>
                 <TMDBLink
-                  href={""}
+                  href={getMediaHref(bannerData)}
                   severity={BUTTON_VARIANTS.LIGHT}
                   link={false}
                   outline={true}

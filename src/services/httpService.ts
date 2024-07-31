@@ -3,7 +3,7 @@ import { getApi, putApi, postApi, deleteApi, patchApi } from "./httpMethods";
 import { API_TYPE } from "@constants";
 
 const httpService = (
-  method: string = API_TYPE.GET,
+  method: string,
   url: string,
   headerOptions?: { [key: string]: string },
   data?: any,
