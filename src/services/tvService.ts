@@ -18,4 +18,12 @@ export const TVService = {
       getHeader(),
     );
   },
+
+  getRecommendations: (seriesId: number, pageNumber?: number) => {
+    return httpService(
+      API_TYPE.GET,
+      API_ROUTES.TV_SERIES.getRecommendations({ seriesId, pageNumber }),
+      getHeader(),
+    );
+  },
 };

@@ -111,8 +111,8 @@ export const TMDBCardSlider = memo(
           }`}
         >
           <Slider ref={slider} {...sliderSettings}>
-            {siderData.map((slide, index) => (
-              <div className="px-2 h-full" key={index}>
+            {siderData.map((slide) => (
+              <div className="px-2 h-full" key={slide.id}>
                 <TMDBCard cardData={slide} cardId={sliderId} t={t} />
               </div>
             ))}

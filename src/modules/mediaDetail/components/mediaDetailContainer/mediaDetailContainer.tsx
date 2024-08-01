@@ -2,11 +2,13 @@ import { IMediaDetailProps } from "@type/mediaDetailTypes";
 import MediaDetailBanner from "../mediaDetailBanner/mediaDetailBanner";
 import { memo } from "react";
 import MediaDetailCast from "../mediaDetailCast/mediaDetailCast";
+import { TMDBCardSlider } from "@components/ui";
 
 const MediaDetailContainer = ({
   mediaDetail,
   mediaType,
   mediaCast,
+  mediaRecommendations,
   t,
 }: IMediaDetailProps) => {
   return (
@@ -28,6 +30,14 @@ const MediaDetailContainer = ({
           </div>
           <div className="col-span-4"></div>
         </div>
+      </div>
+      <div className="mt-8">
+        <TMDBCardSlider
+          siderData={mediaRecommendations}
+          sliderId="mediaRecommendations"
+          t={t}
+          sliderTitle="Recommendations"
+        />
       </div>
     </>
   );

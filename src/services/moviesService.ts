@@ -67,6 +67,14 @@ export const MoviesService = {
     );
   },
 
+  getRecommendations: (movieId: number, pageNumber?: number) => {
+    return httpService(
+      API_TYPE.GET,
+      API_ROUTES.MOVIES.getRecommendations({ movieId, pageNumber }),
+      getHeader(),
+    );
+  },
+
   getSimilar: (movieId: number, pageNumber?: number) => {
     return httpService(
       API_TYPE.GET,
