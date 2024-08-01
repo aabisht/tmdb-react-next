@@ -8,11 +8,13 @@ import { getMediaId, getMediaYear } from "@utils/helpers";
 import {
   fetchMediaCast,
   fetchMediaDetail,
+  fetchMediaRecommendations,
 } from "@modules/mediaDetail/components/mediaDetailContainer/redux/action";
 import { MEDIA } from "@constants";
 import { useAppSelector } from "@redux/hooks";
 import { State } from "@type/store";
 import { ICast, IMedaiData } from "@type/mediaDetailTypes";
+import { IMediaResults } from "@type/commonTypes";
 
 const MovieDetail: NextPage = () => {
   const { t } = useTranslation("common");
@@ -21,6 +23,9 @@ const MovieDetail: NextPage = () => {
   );
   const mediaCast = useAppSelector(
     (state: State) => state.mediaDetailSlice?.mediaCast,
+  );
+  const mediaRecommendations = useAppSelector(
+    (state: State) => state.mediaDetailSlice?.mediaRelated,
   );
 
   return (
@@ -35,6 +40,7 @@ const MovieDetail: NextPage = () => {
         mediaType={MEDIA.MOVIE}
         mediaDetail={mediaDetail as IMedaiData}
         mediaCast={mediaCast as ICast[]}
+        mediaRecommendations={mediaRecommendations as IMediaResults[]}
       />
     </Layouts>
   );
@@ -50,6 +56,13 @@ export const getServerSideProps: GetServerSideProps =
 
     await store.dispatch<any>(
       fetchMediaCast(getMediaId(query?.movieDetail as string), MEDIA.MOVIE),
+    );
+
+    await store.dispatch<any>(
+      fetchMediaRecommendations(
+        getMediaId(query?.movieDetail as string),
+        MEDIA.MOVIE,
+      ),
     );
 
     return {

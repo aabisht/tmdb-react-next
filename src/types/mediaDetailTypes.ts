@@ -1,5 +1,5 @@
 import { TFunction } from "i18next";
-import { IGenre } from "./commonTypes";
+import { IGenre, IMediaResults } from "./commonTypes";
 
 export interface IBelongsToCollection {
   id: number;
@@ -137,6 +137,7 @@ export interface IMedaiData extends IMovies, ITVShow {}
 
 export interface IMediaDetailProps extends IMediaDetailBannerProps {
   mediaCast: ICast[];
+  mediaRecommendations: IMediaResults[];
 }
 
 export interface IMediaDetailBannerProps {
@@ -148,6 +149,7 @@ export interface IMediaDetailSlice {
   mediaDetail: IMedaiData;
   mediaType: string;
   mediaCast: ICast[];
+  mediaRelated: IMediaResults[];
 }
 
 export interface ICast {

@@ -27,9 +27,9 @@ export const getMediaIconName = (mediaType: string): string => {
 
 export const replaceSpaceWithDash = (name: string): string => {
   return name
-    .replace(/ /g, "-")
-    .replace(/[ :[\]/]/g, "")
-    .toLowerCase();
+    ?.replace(/ /g, "-")
+    ?.replace(/[ :[\]/]/g, "")
+    ?.toLowerCase();
 };
 
 export const getMediaHref = (cardData: IMediaResults) => {

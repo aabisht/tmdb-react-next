@@ -125,3 +125,9 @@ export interface ITVParam {
   seriesId: number;
   language?: string;
 }
+
+export interface ITVReviewsParam extends ITVParam {
+  pageNumber?: number;
+}
+
+export interface ITVSimilarParam extends ITVReviewsParam {}

@@ -23,6 +23,7 @@ import {
   IMovieSimilarParam,
   ITrendingRequestParam,
   ITVParam,
+  ITVSimilarParam,
 } from "@type/commonTypes";
 
 export const API_TYPE: {
@@ -294,6 +295,12 @@ export const API_ROUTES = {
       language = "en-US",
     }: IMovieReviewsParam) =>
       `${API_BASE_URL.movie}/${movieId}/reviews?${getLanguage(language)}${getPageNumber(pageNumber)}`,
+    getRecommendations: ({
+      movieId,
+      pageNumber = 1,
+      language = "en-US",
+    }: IMovieSimilarParam) =>
+      `${API_BASE_URL.movie}/${movieId}/recommendations?${getLanguage(language)}${getPageNumber(pageNumber)}`,
     getSimilar: ({
       movieId,
       pageNumber = 1,
@@ -312,6 +319,12 @@ export const API_ROUTES = {
       `${API_BASE_URL.tv}/${seriesId}?${getLanguage(language)}`,
     getCredits: ({ seriesId, language = "en-US" }: ITVParam) =>
       `${API_BASE_URL.tv}/${seriesId}/aggregate_credits?${getLanguage(language)}`,
+    getRecommendations: ({
+      seriesId,
+      pageNumber = 1,
+      language = "en-US",
+    }: ITVSimilarParam) =>
+      `${API_BASE_URL.tv}/${seriesId}/recommendations?${getLanguage(language)}${getPageNumber(pageNumber)}`,
   },
 };
 
