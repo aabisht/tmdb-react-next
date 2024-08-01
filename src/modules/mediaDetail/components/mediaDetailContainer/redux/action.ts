@@ -1,21 +1,36 @@
 import { MoviesService } from "@services/moviesService";
-import { IMedaiData } from "@type/mediaDetailTypes";
 import { Dispatch } from "react";
 import { AnyAction } from "redux";
-import { setMediaDetail } from "./slice";
+import { setMediaCast, setMediaDetail } from "./slice";
 import { MEDIA } from "@constants";
 import { TVService } from "@services/tvService";
 
 export const fetchMediaDetail = (mediaID: number, mediaType: string) => {
   return async (dispatch: Dispatch<AnyAction>) => {
     try {
-      let mediaData: IMedaiData;
-      if (mediaType === MEDIA.MOVIE) {
-        mediaData = (await MoviesService.getMovieDetail(mediaID)).data;
-      } else {
-        mediaData = (await TVService.getTVDetails(mediaID)).data;
-      }
-      dispatch(setMediaDetail(mediaData));
+      dispatch(
+        setMediaDetail(
+          mediaType === MEDIA.MOVIE
+            ? (await MoviesService.getMovieDetail(mediaID)).data
+            : (await TVService.getTVDetails(mediaID)).data,
+        ),
+      );
+    } catch (error: any) {
+      throw new Error(error);
+    }
+  };
+};
+
+export const fetchMediaCast = (mediaID: number, mediaType: string) => {
+  return async (dispatch: Dispatch<AnyAction>) => {
+    try {
+      dispatch(
+        setMediaCast(
+          mediaType === MEDIA.MOVIE
+            ? (await MoviesService.getCredits(mediaID)).data.cast
+            : (await TVService.getCredits(mediaID)).data.cast,
+        ),
+      );
     } catch (error: any) {
       throw new Error(error);
     }

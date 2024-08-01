@@ -310,6 +310,8 @@ export const API_ROUTES = {
   TV_SERIES: {
     getDetails: ({ seriesId, language = "en-US" }: ITVParam) =>
       `${API_BASE_URL.tv}/${seriesId}?${getLanguage(language)}`,
+    getCredits: ({ seriesId, language = "en-US" }: ITVParam) =>
+      `${API_BASE_URL.tv}/${seriesId}/aggregate_credits?${getLanguage(language)}`,
   },
 };
 

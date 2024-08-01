@@ -2,6 +2,7 @@ import { LinkProps } from "next/link";
 import { ButtonProps } from "primereact/button";
 import { IMediaResults } from "./commonTypes";
 import { TFunction } from "i18next";
+import { ICast } from "./mediaDetailTypes";
 
 export interface ITMDBIcon {
   isOutline?: boolean;
@@ -73,4 +74,10 @@ export interface ITMDBGenresList {
 export interface ITMDBBanner {
   backdropPath: string;
   alt: string;
+}
+
+export interface ITMDBCastCardProps {
+  cast: ICast;
+  mediaType: string;
+  t: TFunction;
 }
