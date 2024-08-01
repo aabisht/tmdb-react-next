@@ -1,5 +1,6 @@
 import { MEDIA } from "@constants";
 import { IMediaResults, IMediaRuntime } from "@type/commonTypes";
+import { ICast } from "@type/mediaDetailTypes";
 
 export const getMediaYear = (date: string): number => {
   return new Date(date || "").getFullYear();
@@ -33,7 +34,11 @@ export const replaceSpaceWithDash = (name: string): string => {
 
 export const getMediaHref = (cardData: IMediaResults) => {
   const mediaTitle = (cardData?.title ?? cardData?.name) as string;
-  return `${cardData?.media_type}/${cardData?.id}-${replaceSpaceWithDash(mediaTitle)}`;
+  return `/${cardData?.media_type}/${cardData?.id}-${replaceSpaceWithDash(mediaTitle)}`;
+};
+
+export const getCastHref = (cast: ICast) => {
+  return `/person/${cast?.id}-${replaceSpaceWithDash(cast?.name)}`;
 };
 
 export const getMediaId = (pageName: string): number => {

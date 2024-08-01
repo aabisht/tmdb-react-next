@@ -135,15 +135,47 @@ export interface ITVShow {
 
 export interface IMedaiData extends IMovies, ITVShow {}
 
-export interface IMediaDetailProps {
+export interface IMediaDetailProps extends IMediaDetailBannerProps {
+  mediaCast: ICast[];
+}
+
+export interface IMediaDetailBannerProps {
   mediaDetail: IMedaiData;
   mediaType: string;
   t: TFunction;
 }
-
-export interface IMediaDetailBannerProps extends IMediaDetailProps {}
-
 export interface IMediaDetailSlice {
   mediaDetail: IMedaiData;
   mediaType: string;
+  mediaCast: ICast[];
+}
+
+export interface ICast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id?: number;
+  character?: string;
+  credit_id: string;
+  order: number;
+  roles?: IRole[];
+  total_episode_count?: number;
+}
+
+export interface IRole {
+  credit_id: string;
+  character: string;
+  episode_count: number;
+}
+
+export interface IMediaDetailCastProps {
+  cast: ICast[];
+  mediaType: string;
+  t: TFunction;
+  className?: string;
 }

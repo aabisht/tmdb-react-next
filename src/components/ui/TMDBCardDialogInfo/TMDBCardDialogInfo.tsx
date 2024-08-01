@@ -25,14 +25,14 @@ export const TMDBCardDialogInfo = memo(
             <div className="ptrack-content">
               <TMDBLink
                 href={href}
-                className={`no-underline ${useDarkThemeFlag ? "!text-white" : "!text-black-light"}`}
+                className={`no-underline transition-none ${useDarkThemeFlag ? "!text-white" : "!text-black-light"}`}
                 tabIndex={-1}
               >
-                <h2 className="text-sm font-bold mt-0 mb-1.5 whitespace-nowrap overflow-hidden text-ellipsis">
+                <h2 className="text-sm font-bold mt-0 mb-1.5 text-truncate">
                   <TMDBIcon
                     iconsName={getMediaIconName(cardData.media_type)}
                     isOutline
-                    className="!text-sm mr-0.5 align-middle"
+                    className="!text-sm mr-0.5 align-middle mt-[-2px]"
                   />
                   <span>{mediaTitle}</span>
                 </h2>

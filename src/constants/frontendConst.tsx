@@ -87,10 +87,10 @@ export const STILL_SIZES = {
 };
 
 export const PROFILE_SIZES = {
-  W45: 0,
-  W185: 1,
-  H632: 2,
-  ORIGINAL: 3,
+  W45: "w45",
+  W185: "w185",
+  H632: "h632",
+  ORIGINAL: "original",
 };
 
 export const POSTER_SIZES = {

@@ -31,11 +31,20 @@
     "TMDBGenre": {
       "view_genre_related_movie": "View movies related to {{genreName}}",
       "view_genre_related_tv": "View tv shows related to {{genreName}}"
+    },
+    "TMDBCastCard": {
+      "episodes": "{{episodesNumber}} Episodes",
+      "view_person": "View {{personName}}"
     }
   },
   "homePage": {
     "TrendingMedia": {
       "title": "Trending Now"
+    }
+  },
+  "mediaDetailPage": {
+    "MediaDetailCast": {
+      "cast": "Cast"
     }
   }
 }

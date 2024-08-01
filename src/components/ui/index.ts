@@ -11,3 +11,4 @@ export * from "./TMDBImg/TMDBImg";
 export * from "./TMDBLink/TMDBLink";
 export * from "./TMDBGenresList/TMDBGenresList";
 export * from "./TMDBGenre/TMDBGenre";
+export * from "./TMDBCastCard/TMDBCastCard";

@@ -10,4 +10,12 @@ export const TVService = {
       getHeader(),
     );
   },
+
+  getCredits: (seriesId: number) => {
+    return httpService(
+      API_TYPE.GET,
+      API_ROUTES.TV_SERIES.getCredits({ seriesId }),
+      getHeader(),
+    );
+  },
 };

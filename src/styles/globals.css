@@ -8,3 +8,9 @@
   @tailwind components;
   @tailwind utilities;
 }
+
+.text-truncate {
+  @apply whitespace-nowrap;
+  @apply overflow-hidden;
+  @apply text-ellipsis;
+}

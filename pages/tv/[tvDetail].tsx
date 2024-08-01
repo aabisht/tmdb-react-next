@@ -5,16 +5,22 @@ import Layouts from "@components/layouts/layouts";
 import { wrapper } from "src/redux/store";
 import MediaDetailContainer from "@modules/mediaDetail/components/mediaDetailContainer/mediaDetailContainer";
 import { getMediaId, getMediaYear } from "@utils/helpers";
-import { fetchMediaDetail } from "@modules/mediaDetail/components/mediaDetailContainer/redux/action";
+import {
+  fetchMediaCast,
+  fetchMediaDetail,
+} from "@modules/mediaDetail/components/mediaDetailContainer/redux/action";
 import { MEDIA } from "@constants";
 import { useAppSelector } from "@redux/hooks";
 import { State } from "@type/store";
-import { IMedaiData } from "@type/mediaDetailTypes";
+import { ICast, IMedaiData } from "@type/mediaDetailTypes";
 
 const TVDetail: NextPage = () => {
   const { t } = useTranslation("common");
   const mediaDetail = useAppSelector(
     (state: State) => state.mediaDetailSlice?.mediaDetail,
+  );
+  const mediaCast = useAppSelector(
+    (state: State) => state.mediaDetailSlice?.mediaCast,
   );
 
   return (
@@ -28,6 +34,7 @@ const TVDetail: NextPage = () => {
         t={t}
         mediaType={MEDIA.TV}
         mediaDetail={mediaDetail as IMedaiData}
+        mediaCast={mediaCast as ICast[]}
       />
     </Layouts>
   );
@@ -39,6 +46,10 @@ export const getServerSideProps: GetServerSideProps =
 
     await store.dispatch<any>(
       fetchMediaDetail(getMediaId(query?.tvDetail as string), MEDIA.TV),
+    );
+
+    await store.dispatch<any>(
+      fetchMediaCast(getMediaId(query?.tvDetail as string), MEDIA.TV),
     );
 
     return {

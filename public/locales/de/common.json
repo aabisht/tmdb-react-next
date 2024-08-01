@@ -31,11 +31,20 @@
     "TMDBGenre": {
       "view_genre_related_movie": "Bekijk films gerelateerd aan {{genreName}}",
       "view_genre_related_tv": "Bekijk tv-programma's gerelateerd aan {{genreName}}"
+    },
+    "TMDBCastCard": {
+      "episodes": "{{episodesNumber}} Episoden",
+      "view_person": "Ansehen {{personName}}"
     }
   },
   "homePage": {
     "TrendingMedia": {
       "title": "Gerade Angesagt"
+    }
+  },
+  "mediaDetailPage": {
+    "MediaDetailCast": {
+      "cast": "Gießen"
     }
   }
 }
