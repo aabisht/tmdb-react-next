@@ -33,11 +33,13 @@ export const TMDBCastCard = memo(
       if (cast.profile_path) {
         return (
           <TMDBImg
-            path={cast.profile_path}
+            src={cast.profile_path}
             alt={cast.name}
             imgType={PROFILE_SIZES.W185}
-            width={185}
-            height={277}
+            width="0"
+            height="0"
+            sizes="100vw"
+            className="w-full h-auto"
           />
         );
       } else {

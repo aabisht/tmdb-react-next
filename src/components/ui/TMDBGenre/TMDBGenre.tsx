@@ -2,13 +2,14 @@ import { MEDIA } from "@constants";
 import { IGenre } from "@type/commonTypes";
 import { State } from "@type/store";
 import { ITMDBGenre } from "@type/uiTypes";
-import React, { memo } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { TMDBLink } from "../TMDBLink/TMDBLink";
 import { replaceSpaceWithDash } from "@utils/helpers";
 
 export const TMDBGenre = memo(
   ({ genreId, mediaType, className, tabIndex, t }: ITMDBGenre) => {
+    const [genreName, setGenreName] = useState<string>("");
     const genresMovieList: IGenre[] = useSelector(
       (state: State) =>
         state?.configurationSlice?.genresMovieList?.genres as IGenre[],
@@ -19,33 +20,33 @@ export const TMDBGenre = memo(
         state?.configurationSlice?.genresTVList?.genres as IGenre[],
     );
 
-    const findGenreName = () => {
-      const genre = (
-        mediaType === MEDIA.MOVIE ? genresMovieList : genresTVList
-      )?.find((genre) => genre.id === genreId);
-
-      return genre?.name;
-    };
+    useEffect(() => {
+      setGenreName(
+        (mediaType === MEDIA.MOVIE ? genresMovieList : genresTVList)?.find(
+          (genre) => genre.id === genreId,
+        )?.name as string,
+      );
+    }, [mediaType, genreId, genresMovieList, genresTVList]);
 
     const getAriaLabel = () => {
       return mediaType === MEDIA.MOVIE
         ? t("ui.TMDBGenre.view_genre_related_movie", {
-            genreName: findGenreName(),
+            genreName: genreName,
           })
         : t("ui.TMDBGenre.view_genre_related_tv", {
-            genreName: findGenreName(),
+            genreName: genreName,
           });
     };
 
     return (
       <TMDBLink
-        href={`genre/${genreId}-${replaceSpaceWithDash(findGenreName() as string)}/${mediaType}`}
+        href={`genre/${genreId}-${replaceSpaceWithDash(genreName)}/${mediaType}`}
         className={className}
-        title={findGenreName()}
+        title={genreName}
         tabIndex={tabIndex}
         aria-label={getAriaLabel()}
       >
-        {findGenreName()}
+        {genreName}
       </TMDBLink>
     );
   },

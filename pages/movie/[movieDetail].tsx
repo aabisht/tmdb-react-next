@@ -15,6 +15,10 @@ import { useAppSelector } from "@redux/hooks";
 import { State } from "@type/store";
 import { ICast, IMedaiData } from "@type/mediaDetailTypes";
 import { IMediaResults } from "@type/commonTypes";
+import {
+  fetchGenresMovieList,
+  fetchGenresTVList,
+} from "@components/header/headerComponent/redux/action";
 
 const MovieDetail: NextPage = () => {
   const { t } = useTranslation("common");
@@ -50,6 +54,8 @@ export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async (context) => {
     const { locale = "en", query } = context;
 
+    await store.dispatch<any>(fetchGenresMovieList());
+    await store.dispatch<any>(fetchGenresTVList());
     await store.dispatch<any>(
       fetchMediaDetail(getMediaId(query?.movieDetail as string), MEDIA.MOVIE),
     );

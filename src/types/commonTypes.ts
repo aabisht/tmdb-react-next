@@ -1,3 +1,5 @@
+import { ImageProps } from "next/image";
+
 export interface ISEO {
   useDarkTheme?: boolean;
 }
@@ -75,13 +77,8 @@ export interface IGenreList {
   genres: IGenre[];
 }
 
-export interface ITMDBImg {
-  path: string;
-  alt: string;
+export interface ITMDBImg extends ImageProps {
   imgType: string;
-  width: number;
-  height: number;
-  quality?: number;
   className?: string;
 }
 

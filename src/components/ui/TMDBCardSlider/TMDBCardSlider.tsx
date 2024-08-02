@@ -1,5 +1,5 @@
 import { ITMDBCardSlider } from "@type/uiTypes";
-import React, { memo, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import { TMDBButton, TMDBCard, TMDBIcon, TMDBLink, TMDBPrevArrow } from "..";
 import { ARROW_TYPE, BUTTON_VARIANTS, SCREENS, THEME_NAME } from "@constants";
 import Slider from "react-slick";
@@ -7,9 +7,11 @@ import "node_modules/slick-carousel/slick/slick.css";
 import style from "./TMDBCardSlider.module.css";
 import { useSelector } from "react-redux";
 import { State } from "@type/store";
+import { usePathname } from "next/navigation";
 
 export const TMDBCardSlider = memo(
   ({ siderData, sliderTitle, sliderLink, sliderId, t }: ITMDBCardSlider) => {
+    const pathname = usePathname();
     const theme = useSelector(
       (state: State) => state?.themeSlice?.themeName as string,
     );
@@ -40,6 +42,10 @@ export const TMDBCardSlider = memo(
         },
       },
     ];
+
+    useEffect(() => {
+      slider?.current?.slickGoTo(0);
+    }, [pathname]);
 
     const appendDots = (dots: React.ReactNode) => {
       return sliderTitle ? (
@@ -111,9 +117,14 @@ export const TMDBCardSlider = memo(
           }`}
         >
           <Slider ref={slider} {...sliderSettings}>
-            {siderData.map((slide) => (
+            {siderData.map((slide, index) => (
               <div className="px-2 h-full" key={slide.id}>
-                <TMDBCard cardData={slide} cardId={sliderId} t={t} />
+                <TMDBCard
+                  cardData={slide}
+                  cardId={sliderId}
+                  t={t}
+                  imagePriority={index < 6}
+                />
               </div>
             ))}
           </Slider>

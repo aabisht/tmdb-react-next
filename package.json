@@ -24,7 +24,7 @@
     "axios": "^1.6.0",
     "formik": "^2.4.5",
     "i18next": "latest",
-    "next": "^13.5.4",
+    "next": "^14.2.5",
     "next-auth": "latest",
     "next-i18next": "latest",
     "next-redux-wrapper": "^8.1.0",
