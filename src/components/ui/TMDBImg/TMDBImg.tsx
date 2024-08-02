@@ -5,25 +5,47 @@ import { memo } from "react";
 
 export const TMDBImg = memo(
   ({
-    path,
-    alt,
+    src,
     imgType,
     width,
     height,
-    quality = 100,
-    className = "",
+    alt,
+    fill,
+    sizes,
+    quality = 70,
+    priority,
+    placeholder,
+    style,
+    loading,
+    blurDataURL,
+    overrideSrc,
+    className,
+    loader,
+    onLoad,
+    onError,
   }: ITMDBImg) => {
     const baseURL = getBaseURL();
-    const src = `${baseURL}${imgType}${path}`;
+    const _src = `${baseURL}${imgType}${src}`;
 
     return (
       <Image
-        src={src}
+        src={_src}
         alt={alt}
         width={width}
         height={height}
         quality={quality}
         className={className}
+        fill={fill}
+        sizes={sizes}
+        priority={priority}
+        placeholder={placeholder}
+        style={style}
+        loading={loading}
+        blurDataURL={blurDataURL}
+        overrideSrc={overrideSrc}
+        loader={loader}
+        onLoad={onLoad}
+        onError={onError}
       />
     );
   },

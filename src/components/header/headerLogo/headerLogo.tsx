@@ -10,7 +10,7 @@ const HeaderLogo = ({ t }: { t: TFunction }) => {
         priority={true}
         alt={t("header.headerLogo.logoAlt")}
         width={150}
-        height={20}
+        height={19}
       />
     </Link>
   );

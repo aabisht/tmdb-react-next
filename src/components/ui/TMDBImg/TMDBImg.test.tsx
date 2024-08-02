@@ -30,7 +30,7 @@ jest.mock(
 
 describe("TMDBImg", () => {
   const defaultProps = {
-    path: "/example.jpg",
+    src: "/example.jpg",
     alt: "Example Image",
     imgType: "poster",
     width: 200,

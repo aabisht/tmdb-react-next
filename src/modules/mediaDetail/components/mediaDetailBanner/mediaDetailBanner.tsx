@@ -59,7 +59,7 @@ const MediaDetailBanner = ({
             <div className="flex justify-start items-end flex-wrap">
               <div className="w-[25%] overflow-hidden shadow-md rounded border border-solid border-black">
                 <TMDBImg
-                  path={mediaDetail?.poster_path}
+                  src={mediaDetail?.poster_path}
                   alt={title}
                   imgType={POSTER_SIZES.W342}
                   width={342}

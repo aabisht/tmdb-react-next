@@ -53,6 +53,7 @@ export interface ITMDBGenre {
 export interface ITMDBCard {
   cardData: IMediaResults;
   cardId: string;
+  imagePriority?: boolean;
   t: TFunction;
 }
 

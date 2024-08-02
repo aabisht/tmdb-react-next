@@ -8,12 +8,13 @@ export const TMDBBannerBackground = memo(
     return (
       <div>
         <TMDBImg
-          path={backdropPath}
+          src={backdropPath}
           alt={alt}
           imgType={BACKDROP_SIZES.W1280}
           width={1280}
           height={720}
           className="absolute left-[50%] top-[50%] -translate-x-2/4 -translate-y-2/4 max-w-none min-w-full min-h-full z-[1] object-cover"
+          priority={true}
         />
         <div
           aria-hidden="true"

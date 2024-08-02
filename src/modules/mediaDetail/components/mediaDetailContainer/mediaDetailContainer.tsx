@@ -31,14 +31,16 @@ const MediaDetailContainer = ({
           <div className="col-span-4"></div>
         </div>
       </div>
-      <div className="mt-8">
-        <TMDBCardSlider
-          siderData={mediaRecommendations}
-          sliderId="mediaRecommendations"
-          t={t}
-          sliderTitle="Recommendations"
-        />
-      </div>
+      {mediaRecommendations.length > 0 && (
+        <div className="mt-8">
+          <TMDBCardSlider
+            siderData={mediaRecommendations}
+            sliderId="mediaRecommendations"
+            t={t}
+            sliderTitle="Recommendations"
+          />
+        </div>
+      )}
     </>
   );
 };
