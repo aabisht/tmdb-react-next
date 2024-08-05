@@ -61,7 +61,7 @@ export const TMDBCastCard = memo(
     return (
       <TMDBLink
         href={getCastHref(cast)}
-        className={`block relative shadow-md rounded h-full w-full max-w-[185px] no-underline transition-none ${
+        className={`block relative shadow-md rounded overflow-hidden h-full w-full max-w-[185px] no-underline transition-none ${
           useDarkThemeFlag ? "!text-white" : "!text-black-light"
         }`}
         aria-label={t("ui.TMDBCastCard.view_person", { personName: cast.name })}

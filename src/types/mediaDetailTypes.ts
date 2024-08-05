@@ -182,15 +182,16 @@ export interface IMediaDetailCastProps {
   className?: string;
 }
 
-export interface ICollection {
-  id: number;
-  name: string;
-  poster_path: string;
-  backdrop_path: string;
+export interface IMovieCollectionProps {
+  collection: IBelongsToCollection;
+  t: TFunction;
+  className?: string;
 }
 
-export interface IMovieCollectionProps {
-  collection: ICollection;
+export interface ITvSeasonListProps {
+  seasons: ISeason[];
+  id: number;
+  tvShowName: string;
   t: TFunction;
   className?: string;
 }
