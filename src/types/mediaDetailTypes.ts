@@ -181,3 +181,16 @@ export interface IMediaDetailCastProps {
   t: TFunction;
   className?: string;
 }
+
+export interface ICollection {
+  id: number;
+  name: string;
+  poster_path: string;
+  backdrop_path: string;
+}
+
+export interface IMovieCollectionProps {
+  collection: ICollection;
+  t: TFunction;
+  className?: string;
+}

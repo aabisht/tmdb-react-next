@@ -9,8 +9,8 @@ export const TMDBCardDialogInfo = memo(
     const mediaTitle = cardData?.title ?? cardData?.name;
     const mediaDate =
       cardData?.media_type === MEDIA.TV
-        ? cardData?.first_air_date
-        : cardData?.release_date;
+        ? (cardData?.first_air_date as string)
+        : (cardData?.release_date as string);
     const voteAverage = cardData?.vote_average?.toFixed(1);
 
     return (
@@ -47,7 +47,9 @@ export const TMDBCardDialogInfo = memo(
           </div>
           <div>
             <div className="flex items-center justify-between text-sm">
-              <strong>{getMediaYear(mediaDate as string)}</strong>
+              <strong>
+                {mediaDate?.length > 0 && getMediaYear(mediaDate)}
+              </strong>
               <span className="flex items-center justify-end">
                 <TMDBIcon
                   iconsName="grade"

@@ -56,6 +56,7 @@ export const getServerSideProps: GetServerSideProps =
 
     await store.dispatch<any>(fetchGenresMovieList());
     await store.dispatch<any>(fetchGenresTVList());
+
     await store.dispatch<any>(
       fetchMediaDetail(getMediaId(query?.movieDetail as string), MEDIA.MOVIE),
     );

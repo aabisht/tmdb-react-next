@@ -45,6 +45,11 @@
   "mediaDetailPage": {
     "MediaDetailCast": {
       "cast": "Cast"
+    },
+    "MovieCollection": {
+      "part_of": "Part of the {{collectionName}}",
+      "view_collection": "View This Collection",
+      "view_collection_name": "View {{collectionName}}"
     }
   }
 }
