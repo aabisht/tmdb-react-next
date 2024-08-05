@@ -12,3 +12,4 @@ export * from "./TMDBLink/TMDBLink";
 export * from "./TMDBGenresList/TMDBGenresList";
 export * from "./TMDBGenre/TMDBGenre";
 export * from "./TMDBCastCard/TMDBCastCard";
+export * from "./TMDBTVSeason/TMDBTVSeason";

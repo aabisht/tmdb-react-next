@@ -5,6 +5,7 @@ import MediaDetailCast from "../mediaDetailCast/mediaDetailCast";
 import { TMDBCardSlider } from "@components/ui";
 import MovieCollection from "../movieCollection/MovieCollection";
 import { MEDIA } from "@constants";
+import TvSeasonList from "../tvSeasonList/TvSeasonList";
 
 const MediaDetailContainer = ({
   mediaDetail,
@@ -37,6 +38,15 @@ const MediaDetailContainer = ({
                   className="mt-8"
                 />
               )}
+            {mediaType === MEDIA.TV && mediaDetail?.seasons.length > 0 && (
+              <TvSeasonList
+                seasons={mediaDetail.seasons}
+                id={mediaDetail.id}
+                t={t}
+                className="mt-8"
+                tvShowName={mediaDetail?.title || mediaDetail?.name}
+              />
+            )}
           </div>
           <div className="col-span-4"></div>
         </div>

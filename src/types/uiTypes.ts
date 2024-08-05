@@ -2,7 +2,7 @@ import { LinkProps } from "next/link";
 import { ButtonProps } from "primereact/button";
 import { IMediaResults } from "./commonTypes";
 import { TFunction } from "i18next";
-import { ICast } from "./mediaDetailTypes";
+import { ICast, ISeason } from "./mediaDetailTypes";
 
 export interface ITMDBIcon {
   isOutline?: boolean;
@@ -81,4 +81,12 @@ export interface ITMDBCastCardProps {
   cast: ICast;
   mediaType: string;
   t: TFunction;
+}
+
+export interface ITvSeasonItemProps {
+  season: ISeason;
+  id: number;
+  tvShowName: string;
+  t: TFunction;
+  className?: string;
 }

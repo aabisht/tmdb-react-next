@@ -35,6 +35,10 @@
     "TMDBCastCard": {
       "episodes": "{{episodesNumber}} Episodes",
       "view_person": "View {{personName}}"
+    },
+    "TMDBTVSeason": {
+      "episodes": "{{episodesNumber}} Episodes",
+      "view_season": "View {{seasonName}} of {{tvShowName}}"
     }
   },
   "homePage": {
