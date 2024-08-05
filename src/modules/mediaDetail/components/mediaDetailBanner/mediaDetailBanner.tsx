@@ -56,18 +56,18 @@ const MediaDetailBanner = ({
       <div className="relative h-full flex items-end z-[3] pb-[10vh]">
         <div className="container xl:px-8 relative xl:pr-0 pr-0 flex justify-between items-end">
           <div className="xl:pr-16 lg:pr-8">
-            <div className="flex justify-start items-end flex-wrap">
-              <div className="w-[25%] overflow-hidden shadow-md rounded border border-solid border-black">
+            <div className="grid grid-cols-12 gap-4 justify-start items-end">
+              <div className="col-span-3 overflow-hidden shadow-md rounded">
                 <TMDBImg
                   src={mediaDetail?.poster_path}
                   alt={title}
                   imgType={POSTER_SIZES.W342}
                   width={342}
                   height={513}
-                  className="h-full object-cover rounded border-4 border-solid border-white"
+                  className="h-full w-full object-cover rounded border-4 border-solid border-white"
                 />
               </div>
-              <div className="w-[75%] max-w-[900px] text-white pl-4">
+              <div className="col-span-9 max-w-[900px] text-white">
                 <div>
                   <TMDBIcon
                     iconsName={getMediaIconName(mediaType)}

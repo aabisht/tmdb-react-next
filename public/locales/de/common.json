@@ -45,6 +45,11 @@
   "mediaDetailPage": {
     "MediaDetailCast": {
       "cast": "Gießen"
+    },
+    "MovieCollection": {
+      "part_of": "Teil der {{collectionName}}",
+      "view_collection": "Diese Sammlung ansehen",
+      "view_collection_name": "{{collectionName}} ansehen"
     }
   }
 }

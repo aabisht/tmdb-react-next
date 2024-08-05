@@ -3,6 +3,8 @@ import MediaDetailBanner from "../mediaDetailBanner/mediaDetailBanner";
 import { memo } from "react";
 import MediaDetailCast from "../mediaDetailCast/mediaDetailCast";
 import { TMDBCardSlider } from "@components/ui";
+import MovieCollection from "../movieCollection/MovieCollection";
+import { MEDIA } from "@constants";
 
 const MediaDetailContainer = ({
   mediaDetail,
@@ -27,6 +29,14 @@ const MediaDetailContainer = ({
               t={t}
               className="mt-8"
             />
+            {mediaType === MEDIA.MOVIE &&
+              mediaDetail?.belongs_to_collection && (
+                <MovieCollection
+                  collection={mediaDetail?.belongs_to_collection}
+                  t={t}
+                  className="mt-8"
+                />
+              )}
           </div>
           <div className="col-span-4"></div>
         </div>

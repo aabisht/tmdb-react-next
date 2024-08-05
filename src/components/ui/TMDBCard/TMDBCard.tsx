@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState } from "react";
 import { POSTER_SIZES, THEME_NAME } from "@constants";
 import { useSelector } from "react-redux";
 import { State } from "@type/store";
-import { TMDBCardDialogInfo, TMDBImg, TMDBLink } from "..";
+import { TMDBCardDialogInfo, TMDBIcon, TMDBImg, TMDBLink } from "..";
 import { getMediaHref } from "@utils/helpers";
 import { ITMDBCard } from "@type/uiTypes";
 
@@ -25,6 +25,32 @@ export const TMDBCard = memo(
 
     const mediaTitle = (cardData?.title ?? cardData?.name) as string;
 
+    const renderCardImage = () => {
+      if (cardData?.poster_path) {
+        return (
+          <TMDBImg
+            src={cardData?.poster_path}
+            alt={mediaTitle}
+            imgType={POSTER_SIZES.W342}
+            width={342}
+            height={513}
+            className="h-full object-cover"
+            priority={imagePriority}
+          />
+        );
+      } else {
+        return (
+          <div
+            className={`w-full h-full aspect-[185/277] flex justify-center items-center ${
+              useDarkThemeFlag ? "bg-white/10" : "bg-black/10"
+            }`}
+          >
+            <TMDBIcon iconsName="image" className="!text-8xl" isOutline />
+          </div>
+        );
+      }
+    };
+
     return (
       <div
         className={`overflow-hidden relative h-full transition-transform transform shadow-md ${isHovered ? "scale-110 z-10 rounded-md" : "rounded"}`}
@@ -43,15 +69,7 @@ export const TMDBCard = memo(
             mediaName: mediaTitle,
           })}
         >
-          <TMDBImg
-            src={cardData?.poster_path}
-            alt={mediaTitle}
-            imgType={POSTER_SIZES.W342}
-            width={342}
-            height={513}
-            className="h-full object-cover"
-            priority={imagePriority}
-          />
+          {renderCardImage()}
         </TMDBLink>
         <div
           className={`absolute left-0 right-0 max-h-[183px] overflow-hidden transition-[bottom] rounded-t-xl ${isHovered ? "bottom-0" : "bottom-[-100%]"}`}
