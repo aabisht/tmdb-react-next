@@ -1,0 +1,18 @@
+# next.js
+/.next/
+/out/
+next-env.d.ts
+/public/sw.js
+/public/workbox-*.js
+package-lock.json
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
+
+src/constants/*.ts
+bitbucket-pipelines.yml

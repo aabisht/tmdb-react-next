@@ -1,0 +1,43 @@
+$prefix: tmdb- !default;
+
+$color-black: #000000 !default;
+$color-white: #ffffff !default;
+$color-primary: #01b3e4 !default;
+$color-primary-light: #33c2e9 !default;
+$color-primary-dark: #007d9f !default;
+$color-secondary: #6c757d !default;
+$color-secondary-light: #899097 !default;
+$color-secondary-dark: #4b5157 !default;
+$color-141414: #141414;
+
+$background-color: $color-141414;
+$text-color: $color-white;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1500px,
+) !default;
+
+$container-padding-x-xxl: 60px !default;
+$container-padding-x: 4% !default;
+
+// Banner
+$banner-overlay-left-bg: linear-gradient(
+  77deg,
+  rgba($color-black, 0.6),
+  transparent 85%
+);
+$banner-overlay-left-right-position: 26.09%;
+$banner-overlay-bottom-bg: linear-gradient(
+  rgba($color-141414, 0) 0px,
+  rgba($color-141414, 0.15) 15%,
+  rgba($color-141414, 0.35) 29%,
+  rgba($color-141414, 0.58) 44%,
+  rgba($color-141414, 1) 68%,
+  rgba($color-141414, 1)
+);
+$banner-overlay-bottom-height: 14.7vw;

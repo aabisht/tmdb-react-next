@@ -1,0 +1,59 @@
+@use "../../../styles/variables";
+
+%backgroundComplete {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-wrapper {
+  position: relative;
+  --#{variables.$prefix}-banner-overlay-left-bg: #{variables.$banner-overlay-left-bg};
+  --#{variables.$prefix}-banner-overlay-left-right-position: #{variables.$banner-overlay-left-right-position};
+  --#{variables.$prefix}-banner-overlay-bottom-bg: #{variables.$banner-overlay-bottom-bg};
+  --#{variables.$prefix}-banner-overlay-bottom-height: #{variables.$banner-overlay-bottom-height};
+}
+
+.background-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  .background-img {
+    width: 100%;
+  }
+
+  .background-overlay-left {
+    @extend %backgroundComplete;
+    background: var(--#{variables.$prefix}-banner-overlay-left-bg);
+    right: var(--#{variables.$prefix}-banner-overlay-left-right-position);
+    width: auto;
+    height: auto;
+  }
+
+  .background-overlay-bottom {
+    @extend %backgroundComplete;
+    background-color: transparent;
+    background-image: var(--#{variables.$prefix}-banner-overlay-bottom-bg);
+    background-position: 0 top;
+    background-repeat: repeat-x;
+    background-size: 100% 100%;
+    bottom: -1px;
+    height: var(--#{variables.$prefix}-banner-overlay-bottom-height);
+    opacity: 1;
+    top: auto;
+  }
+}
+
+.content-wrapper {
+  @extend %backgroundComplete;
+  width: 100%;
+  max-width: calc(
+    100% - var(--#{variables.$prefix}-banner-overlay-left-right-position)
+  );
+  padding: 0 var(--#{variables.$prefix}container-padding-x)
+    var(--#{variables.$prefix}-banner-overlay-bottom-height);
+}

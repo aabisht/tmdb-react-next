@@ -1,0 +1,20 @@
+@use "variables";
+@use "./mixins/breakpoints";
+
+:root {
+  --#{variables.$prefix}color-black: #{variables.$color-black};
+  --#{variables.$prefix}color-white: #{variables.$color-white};
+  --#{variables.$prefix}color-primary: #{variables.$color-primary};
+  --#{variables.$prefix}color-primary-light: #{variables.$color-primary-light};
+  --#{variables.$prefix}color-primary-dark: #{variables.$color-primary-dark};
+  --#{variables.$prefix}color-secondary: #{variables.$color-secondary};
+  --#{variables.$prefix}color-secondary-light: #{variables.$color-secondary-light};
+  --#{variables.$prefix}color-secondary-dark: #{variables.$color-secondary-dark};
+  --#{variables.$prefix}background-color: #{variables.$background-color};
+  --#{variables.$prefix}text-color: #{variables.$text-color};
+  --#{variables.$prefix}container-padding-x: #{variables.$container-padding-x};
+
+  @include breakpoints.media-breakpoint-up(xxl) {
+    --#{variables.$prefix}container-padding-x: #{variables.$container-padding-x-xxl};
+  }
+}
