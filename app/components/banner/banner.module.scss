@@ -1,4 +1,4 @@
-@use "../../../styles/variables";
+@use "../../styles/variables";
 
 %backgroundComplete {
   position: absolute;
@@ -16,6 +16,7 @@
   --#{variables.$prefix}-banner-overlay-left-right-position: #{variables.$banner-overlay-left-right-position};
   --#{variables.$prefix}-banner-overlay-bottom-bg: #{variables.$banner-overlay-bottom-bg};
   --#{variables.$prefix}-banner-overlay-bottom-height: #{variables.$banner-overlay-bottom-height};
+  --#{variables.$prefix}-banner-vote-average-font-size: #{variables.$banner-vote-average-font-size};
 }
 
 .background-wrapper {
@@ -51,9 +52,13 @@
 .content-wrapper {
   @extend %backgroundComplete;
   width: 100%;
-  max-width: calc(
-    100% - var(--#{variables.$prefix}-banner-overlay-left-right-position)
-  );
-  padding: 0 var(--#{variables.$prefix}container-padding-x)
-    var(--#{variables.$prefix}-banner-overlay-bottom-height);
+  max-width: calc(100% - var(--#{variables.$prefix}-banner-overlay-left-right-position));
+  padding: 0 var(--#{variables.$prefix}container-padding-x) var(--#{variables.$prefix}-banner-overlay-bottom-height);
+
+
+  .rating-wrapper {
+    .vote-average {
+      font-size: var(--#{variables.$prefix}-banner-vote-average-font-size);
+    }
+  }
 }

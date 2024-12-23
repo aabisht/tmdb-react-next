@@ -2,16 +2,16 @@ $prefix: tmdb- !default;
 
 $color-black: #000000 !default;
 $color-white: #ffffff !default;
-$color-primary: #01b3e4 !default;
-$color-primary-light: #33c2e9 !default;
-$color-primary-dark: #007d9f !default;
-$color-secondary: #6c757d !default;
-$color-secondary-light: #899097 !default;
-$color-secondary-dark: #4b5157 !default;
+$color-primary: var(--tmdb-palette-primary-main) !default;
+$color-primary-light: var(--tmdb-palette-primary-light) !default;
+$color-primary-dark: var(--tmdb-palette-primary-dark) !default;
+$color-secondary: var(--tmdb-palette-secondary-main) !default;
+$color-secondary-light: var(--tmdb-palette-secondary-light) !default;
+$color-secondary-dark: var(--tmdb-palette-secondary-dark) !default;
 $color-141414: #141414;
 
-$background-color: $color-141414;
-$text-color: $color-white;
+$background-color: var(--tmdb-palette-background-default);
+$text-color: var(--tmdb-palette-text-primary);
 
 $grid-breakpoints: (
   xs: 0,
@@ -20,24 +20,22 @@ $grid-breakpoints: (
   lg: 992px,
   xl: 1200px,
   xxl: 1500px,
-) !default;
+  ) !default;
 
 $container-padding-x-xxl: 60px !default;
 $container-padding-x: 4% !default;
 
 // Banner
-$banner-overlay-left-bg: linear-gradient(
-  77deg,
-  rgba($color-black, 0.6),
-  transparent 85%
+$banner-overlay-left-bg: linear-gradient(77deg,
+    rgba($color-black, 0.6),
+    transparent 85%
 );
 $banner-overlay-left-right-position: 26.09%;
-$banner-overlay-bottom-bg: linear-gradient(
-  rgba($color-141414, 0) 0px,
-  rgba($color-141414, 0.15) 15%,
-  rgba($color-141414, 0.35) 29%,
-  rgba($color-141414, 0.58) 44%,
-  rgba($color-141414, 1) 68%,
-  rgba($color-141414, 1)
-);
+$banner-overlay-bottom-bg: linear-gradient(rgba($color-141414, 0) 0px,
+    rgba($color-141414, 0.15) 15%,
+    rgba($color-141414, 0.35) 29%,
+    rgba($color-141414, 0.58) 44%,
+    rgba($color-141414, 1) 68%,
+    rgba($color-141414, 1));
 $banner-overlay-bottom-height: 14.7vw;
+$banner-vote-average-font-size: 1.2rem;

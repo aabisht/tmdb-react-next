@@ -1,4 +1,7 @@
+"use client";
+
 import { createTheme } from "@mui/material";
+import { light } from "@mui/material/styles/createPalette";
 
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
@@ -19,7 +22,12 @@ const headingStyle = (fontSizeBase: string, fontSizeXL: string) => ({
 });
 
 export const theme = createTheme({
+  cssVariables: {
+    cssVarPrefix: "tmdb",
+    disableCssColorScheme: true,
+  },
   palette: {
+    mode: "dark",
     primary: {
       light: "#33c2e9",
       main: "#01b3e4",
@@ -33,7 +41,8 @@ export const theme = createTheme({
       contrastText: "#ffffff",
     },
     background: {
-      default: "var(--tmdb-background-color)",
+      default: "#000000",
+      paper: "#121212",
     },
   },
   breakpoints: {
@@ -55,7 +64,6 @@ export const theme = createTheme({
     body1: {
       fontSize: "1rem",
       lineHeight: "1.5",
-      color: "var(--tmdb-text-color)",
     },
     h5: {
       fontSize: "1.25rem",

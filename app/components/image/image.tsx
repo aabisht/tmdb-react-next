@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { TMDBImageProps } from "../../definitions/imageType";
 import imgStyle from "./image.module.scss";
+import { TMDBImageProps } from "@definitions";
+import { getImageURL } from "@utils/apiHelper";
 
 export const ImageTMDB = ({
   src,
@@ -24,9 +25,7 @@ export const ImageTMDB = ({
   tmdbImage,
   tmdbImageSize = "original",
 }: TMDBImageProps) => {
-  const finalSrc = tmdbImage
-    ? `${process.env.NEXT_API_IMAGE_URL}${tmdbImageSize}${src}`
-    : src;
+  const finalSrc = tmdbImage ? `${getImageURL()}${tmdbImageSize}${src}` : src;
 
   const combinedClassName = `${imgStyle["img-fluid"]} ${className}`.trim();
 

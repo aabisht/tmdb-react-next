@@ -22,9 +22,12 @@
       }
     ],
     "paths": {
-      "@common": ["app/ui/common/index.ts"],
-      "@tmdb": ["app/ui/TMDB/index.ts"],
-      "@definitions": ["app/definitions/index.ts"]
+      "@components": ["app/components/index.ts"],
+      "@constants": ["app/constants/index.ts"],
+      "@definitions": ["app/definitions/index.ts"],
+      "@utils/*": ["app/utils/*"],
+      "@redux/*": ["app/redux/*"],
+      "@services/*": ["app/services/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

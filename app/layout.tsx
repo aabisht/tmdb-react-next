@@ -1,11 +1,17 @@
-"use client";
-
 import "./globals.scss";
-import { roboto, theme } from "@common";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
+import { roboto } from "@utils/fonts";
+import { theme } from "@utils/theme";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { Viewport } from "next";
 
-export default function RootLayout({
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
+function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -13,11 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${roboto.variable}`}>
       <body>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {children}
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
 }
+
+export default RootLayout;
