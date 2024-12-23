@@ -52,9 +52,11 @@
 .content-wrapper {
   @extend %backgroundComplete;
   width: 100%;
-  max-width: calc(100% - var(--#{variables.$prefix}-banner-overlay-left-right-position));
-  padding: 0 var(--#{variables.$prefix}container-padding-x) var(--#{variables.$prefix}-banner-overlay-bottom-height);
-
+  max-width: calc(
+    100% - var(--#{variables.$prefix}-banner-overlay-left-right-position)
+  );
+  padding: 0 var(--#{variables.$prefix}container-padding-x)
+    var(--#{variables.$prefix}-banner-overlay-bottom-height);
 
   .rating-wrapper {
     .vote-average {

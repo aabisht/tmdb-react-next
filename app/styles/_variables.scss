@@ -20,22 +20,25 @@ $grid-breakpoints: (
   lg: 992px,
   xl: 1200px,
   xxl: 1500px,
-  ) !default;
+) !default;
 
 $container-padding-x-xxl: 60px !default;
 $container-padding-x: 4% !default;
 
 // Banner
-$banner-overlay-left-bg: linear-gradient(77deg,
-    rgba($color-black, 0.6),
-    transparent 85%
+$banner-overlay-left-bg: linear-gradient(
+  77deg,
+  rgba($color-black, 0.6),
+  transparent 85%
 );
 $banner-overlay-left-right-position: 26.09%;
-$banner-overlay-bottom-bg: linear-gradient(rgba($color-141414, 0) 0px,
-    rgba($color-141414, 0.15) 15%,
-    rgba($color-141414, 0.35) 29%,
-    rgba($color-141414, 0.58) 44%,
-    rgba($color-141414, 1) 68%,
-    rgba($color-141414, 1));
+$banner-overlay-bottom-bg: linear-gradient(
+  rgba($color-141414, 0) 0px,
+  rgba($color-141414, 0.15) 15%,
+  rgba($color-141414, 0.35) 29%,
+  rgba($color-141414, 0.58) 44%,
+  rgba($color-141414, 1) 68%,
+  rgba($color-141414, 1)
+);
 $banner-overlay-bottom-height: 14.7vw;
 $banner-vote-average-font-size: 1.2rem;
