@@ -1,7 +1,6 @@
 "use client";
 
 import { createTheme } from "@mui/material";
-import { light } from "@mui/material/styles/createPalette";
 
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
