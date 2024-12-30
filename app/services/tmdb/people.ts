@@ -4,7 +4,7 @@ import {
   URLDetailsPeopleProps,
   URLPageLanguageProps,
 } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const personService = {
   getPopular: ({ language, page }: URLPageLanguageProps) =>

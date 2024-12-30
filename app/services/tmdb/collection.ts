@@ -1,6 +1,6 @@
 import { API_ROUTES } from "@constants";
 import { URLCollectionProps } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const collectionService = {
   getDetails: async ({ collection_id, language }: URLCollectionProps) =>

@@ -51,4 +51,14 @@ export const trendingService = {
         page,
       }),
     ),
+  getMovieAndTv: ({
+    time_window = TIME_WINDOW.DAY,
+    language,
+    page,
+  }: URLTrendingProps) => {
+    return Promise.all([
+      trendingService.getMovie({ time_window, language, page }),
+      trendingService.getTv({ time_window, language, page }),
+    ]);
+  },
 };

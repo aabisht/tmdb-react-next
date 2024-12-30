@@ -1,6 +1,6 @@
 import { API_ROUTES } from "@constants";
 import { URLFINDProps } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const findService = {
   getFindByID: async ({

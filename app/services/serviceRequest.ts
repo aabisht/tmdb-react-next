@@ -8,8 +8,16 @@ export const createServiceRequest = (
   data?: { [key: string]: string },
   headers?: { [key: string]: string },
 ) => {
-  return httpService(url, getAPIReadAccessToken(), method, data, {
-    "content-type": "application/json",
-    ...headers,
-  });
+  return httpService(
+    url,
+    getAPIReadAccessToken(),
+    method,
+    data,
+    method !== API_TYPE.GET
+      ? {
+          "content-type": "application/json",
+          ...headers,
+        }
+      : headers,
+  );
 };

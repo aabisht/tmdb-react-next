@@ -6,7 +6,7 @@ import {
   URLDetailsMovieProps,
   URLListsMovieProps,
 } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const movieService = {
   getDetails: async ({ movie_id, language }: URLDetailsMovieProps) =>

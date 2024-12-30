@@ -1,5 +1,5 @@
 import { API_ROUTES, API_TYPE } from "@constants";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const authenticationService = {
   getRequestToken: async () =>

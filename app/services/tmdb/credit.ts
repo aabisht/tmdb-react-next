@@ -1,5 +1,5 @@
 import { API_ROUTES } from "@constants";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const creditService = {
   getCreditDetails: async (credit_id: string) =>

@@ -1,6 +1,6 @@
 import { API_ROUTES } from "@constants";
 import { URLNowPlayingMovieProps } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const movieList = {
   getNowPlaying: ({ language, page, region }: URLNowPlayingMovieProps) =>

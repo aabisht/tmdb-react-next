@@ -1,6 +1,6 @@
 import { API_ROUTES, MEDIA } from "@constants";
 import { FilterParameterProps } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const discoverService = {
   getMedia: async (mediaType: string, filterParameter?: FilterParameterProps) =>

@@ -1,5 +1,5 @@
 import { API_ROUTES, MEDIA } from "@constants";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const genreService = {
   getGenres: async (mediaType: string, language?: string) =>

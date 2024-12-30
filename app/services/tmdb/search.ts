@@ -6,7 +6,7 @@ import {
   URLSearchProps,
   URLTVSearchProps,
 } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const searchService = {
   getCollection: ({

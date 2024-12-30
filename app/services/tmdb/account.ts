@@ -5,7 +5,7 @@ import {
   URLListsProps,
   URLRatedProps,
 } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const accountService = {
   accountDetail: async ({ account_id, session_id }: URLAccountDetailProps) =>

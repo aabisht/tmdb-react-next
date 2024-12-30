@@ -5,7 +5,7 @@ import {
   URLCheckItemStatusListProps,
   URLDetailsListProps,
 } from "@definitions";
-import { createServiceRequest } from "../serviceRequest";
+import { createServiceRequest } from "@services/serviceRequest";
 
 export const listService = {
   addMovie: async ({
