@@ -9,7 +9,7 @@ import {
 import { createServiceRequest } from "@services/serviceRequest";
 
 export const searchService = {
-  getCollection: ({
+  getCollection: async ({
     query,
     include_adult = false,
     language,
@@ -25,11 +25,11 @@ export const searchService = {
         region,
       }),
     ),
-  getCompany: ({ query, page }: URLSearchProps) =>
+  getCompany: async ({ query, page }: URLSearchProps) =>
     createServiceRequest(API_ROUTES.SEARCH.company({ query, page })),
-  getKeyword: ({ query, page }: URLSearchProps) =>
+  getKeyword: async ({ query, page }: URLSearchProps) =>
     createServiceRequest(API_ROUTES.SEARCH.keyword({ query, page })),
-  getMovie: ({
+  getMovie: async ({
     query,
     include_adult = false,
     language,
@@ -49,7 +49,7 @@ export const searchService = {
         primary_release_year,
       }),
     ),
-  getMulti: ({
+  getMulti: async ({
     query,
     include_adult = false,
     language,
@@ -63,7 +63,7 @@ export const searchService = {
         page,
       }),
     ),
-  getPerson: ({
+  getPerson: async ({
     query,
     include_adult = false,
     language,
@@ -77,7 +77,7 @@ export const searchService = {
         page,
       }),
     ),
-  getTv: ({
+  getTv: async ({
     query,
     first_air_date_year,
     include_adult = false,

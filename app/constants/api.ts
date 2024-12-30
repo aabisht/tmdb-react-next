@@ -119,13 +119,13 @@ export const API_ROUTES = {
       sortBy,
       session_id,
     }: URLAccountFavoriteProps) =>
-      `${API_BASE_URL.account}/${account_id}/favorite/${mediaType}${getLanguage(
+      `${API_BASE_URL.account}/${account_id}/favorite/${mediaType}?${getLanguage(
         language,
       )}${getSessionID(session_id)}${getSortBy(sortBy)}${getPageNumber(page)}`,
 
     // Get a users list of custom lists.
     getLists: ({ account_id, session_id, language, page }: URLListsProps) =>
-      `${API_BASE_URL.account}/${account_id}/lists${getLanguage(
+      `${API_BASE_URL.account}/${account_id}/lists?${getLanguage(
         language,
       )}${getSessionID(session_id)}${getPageNumber(page)}`,
 
@@ -139,7 +139,7 @@ export const API_ROUTES = {
       page,
       sortBy,
     }: URLRatedProps) =>
-      `${API_BASE_URL.account}/${account_id}/rated/${mediaType}${episodes ?? MEDIA.EPISODES}${getLanguage(
+      `${API_BASE_URL.account}/${account_id}/rated/${mediaType}${episodes ?? MEDIA.EPISODES}?${getLanguage(
         language,
       )}${getSessionID(session_id)}${getSortBy(sortBy)}${getPageNumber(page)}`,
 
@@ -152,7 +152,7 @@ export const API_ROUTES = {
       page,
       sortBy,
     }: URLAccountFavoriteProps) =>
-      `${API_BASE_URL.account}/${account_id}/watchlist/${mediaType}${getLanguage(
+      `${API_BASE_URL.account}/${account_id}/watchlist/${mediaType}?${getLanguage(
         language,
       )}${getSessionID(session_id)}${getSortBy(sortBy)}${getPageNumber(page)}`,
   },
@@ -169,20 +169,20 @@ export const API_ROUTES = {
   },
   COLLECTION: {
     getDetails: ({ collection_id, language }: URLCollectionProps) =>
-      `${API_BASE_URL.collection}/${collection_id}${getLanguage(language)}`,
+      `${API_BASE_URL.collection}/${collection_id}?${getLanguage(language)}`,
     getImages: ({ collection_id, language }: URLCollectionProps) =>
       `${
         API_BASE_URL.collection
-      }/${collection_id}/images${getLanguage(language)}`,
+      }/${collection_id}/images?${getLanguage(language)}`,
     getTranslations: ({ collection_id, language }: URLCollectionProps) =>
       `${
         API_BASE_URL.collection
-      }/${collection_id}/translations${getLanguage(language)}`,
+      }/${collection_id}/translations?${getLanguage(language)}`,
   },
   CONFIGURATION: {
     getAPIConfiguration: () => `${API_BASE_URL.configuration}`,
     getCountries: (language?: string) =>
-      `${API_BASE_URL.configuration}/countries${getLanguage(language)}`,
+      `${API_BASE_URL.configuration}/countries?${getLanguage(language)}`,
     getJobs: () => `${API_BASE_URL.configuration}/jobs`,
     getLanguages: () => `${API_BASE_URL.configuration}/languages`,
     getPrimaryTranslations: () =>
@@ -201,91 +201,91 @@ export const API_ROUTES = {
       mediaType: string;
       filterParameter?: FilterParameterProps;
     }) =>
-      `${API_BASE_URL.discover}/${mediaType}${
+      `${API_BASE_URL.discover}/${mediaType}?${
         filterParameter && getFilterParameterURL(filterParameter)
       }`,
   },
   FIND: {
     getFindByID: ({ external_id, external_source, language }: URLFINDProps) =>
-      `${API_BASE_URL.find}/${external_id}${getLanguage(
+      `${API_BASE_URL.find}/${external_id}?${getLanguage(
         language,
       )}${getExternalSource(external_source)}`,
   },
   GENRES: {
     getGenresList: ({ mediaType, language }: URLGenreProps) =>
-      `${API_BASE_URL.genre}/${mediaType}/list${getLanguage(language)}`,
+      `${API_BASE_URL.genre}/${mediaType}/list?${getLanguage(language)}`,
   },
   LISTS: {
     addMovie: ({ list_id, session_id }: URLAddMovieListProps) =>
-      `${API_BASE_URL.list}/${list_id}/add_item${getSessionID(session_id)}`,
+      `${API_BASE_URL.list}/${list_id}/add_item?${getSessionID(session_id)}`,
     checkItemStatus: ({
       list_id,
       language,
       movie_id,
     }: URLCheckItemStatusListProps) =>
-      `${API_BASE_URL.list}/${list_id}/item_status${getLanguage(language)}${getMovieId(movie_id)}`,
+      `${API_BASE_URL.list}/${list_id}/item_status?${getLanguage(language)}${getMovieId(movie_id)}`,
     clear: ({ list_id, session_id, confirm = false }: URClearListLProps) =>
-      `${API_BASE_URL.list}/${list_id}/clear${getSessionID(session_id)}${getConfirmStatus(confirm)}`,
+      `${API_BASE_URL.list}/${list_id}/clear?${getSessionID(session_id)}${getConfirmStatus(confirm)}`,
     create: (session_id: string) =>
-      `${API_BASE_URL.list}${getSessionID(session_id)}`,
+      `${API_BASE_URL.list}?${getSessionID(session_id)}`,
     delete: ({ list_id, session_id }: URLAddMovieListProps) =>
-      `${API_BASE_URL.list}/${list_id}${getSessionID(session_id)}`,
+      `${API_BASE_URL.list}/${list_id}?${getSessionID(session_id)}`,
     details: ({ list_id, language, page }: URLDetailsListProps) =>
-      `${API_BASE_URL.list}/${list_id}${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.list}/${list_id}?${getLanguage(language)}${getPageNumber(page)}`,
     removeMovie: ({ list_id, session_id }: URLAddMovieListProps) =>
-      `${API_BASE_URL.list}/${list_id}/remove_item${getSessionID(session_id)}`,
+      `${API_BASE_URL.list}/${list_id}/remove_item?${getSessionID(session_id)}`,
   },
   MOVIE_LISTS: {
     nowPlaying: ({ language, page, region }: URLNowPlayingMovieProps) =>
-      `${API_BASE_URL.movie}/now_playing${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
+      `${API_BASE_URL.movie}/now_playing?${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
     popular: ({ language, page, region }: URLNowPlayingMovieProps) =>
-      `${API_BASE_URL.movie}/popular${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
+      `${API_BASE_URL.movie}/popular?${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
     topRated: ({ language, page, region }: URLNowPlayingMovieProps) =>
-      `${API_BASE_URL.movie}/top_rated${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
+      `${API_BASE_URL.movie}/top_rated?${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
     upcoming: ({ language, page, region }: URLNowPlayingMovieProps) =>
-      `${API_BASE_URL.movie}/upcoming${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
+      `${API_BASE_URL.movie}/upcoming?${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
   },
   MOVIES: {
     details: ({ movie_id, language }: URLDetailsMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}${getLanguage(language)}`,
+      `${API_BASE_URL.movie}/${movie_id}?${getLanguage(language)}`,
     accountStates: ({ movie_id, session_id }: URLAccountStatesMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/account_states${getSessionID(session_id)}`,
+      `${API_BASE_URL.movie}/${movie_id}/account_states?${getSessionID(session_id)}`,
     alternativeTitles: ({
       movie_id,
       country,
     }: URLAlternativeTitlesMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/alternative_titles${getCountry(country)}`,
+      `${API_BASE_URL.movie}/${movie_id}/alternative_titles?${getCountry(country)}`,
     changes: ({ movie_id, end_date, page, start_date }: URLChangesMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/changes${getEndDate(end_date)}${getPageNumber(page)}${getStartDate(start_date)}`,
+      `${API_BASE_URL.movie}/${movie_id}/changes?${getEndDate(end_date)}${getPageNumber(page)}${getStartDate(start_date)}`,
     credits: ({ movie_id, language }: URLDetailsMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/credits${getLanguage(language)}`,
+      `${API_BASE_URL.movie}/${movie_id}/credits?${getLanguage(language)}`,
     externalIDs: (movie_id: number) =>
       `${API_BASE_URL.movie}/${movie_id}/external_ids`,
     images: ({ movie_id, language }: URLDetailsMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/images${getLanguage(language)}`,
+      `${API_BASE_URL.movie}/${movie_id}/images?${getLanguage(language)}`,
     keywords: (movie_id: number) =>
       `${API_BASE_URL.movie}/${movie_id}/keywords`,
     latest: () => `${API_BASE_URL.movie}/latest`,
     lists: ({ movie_id, language, page }: URLListsMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/lists${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.movie}/${movie_id}/lists?${getLanguage(language)}${getPageNumber(page)}`,
     recommendations: ({ movie_id, language, page }: URLListsMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/recommendations${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.movie}/${movie_id}/recommendations?${getLanguage(language)}${getPageNumber(page)}`,
     releaseDates: (movie_id: number) =>
       `${API_BASE_URL.movie}/${movie_id}/release_dates`,
     reviews: ({ movie_id, language, page }: URLListsMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/reviews${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.movie}/${movie_id}/reviews?${getLanguage(language)}${getPageNumber(page)}`,
     similar: ({ movie_id, language, page }: URLListsMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/similar${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.movie}/${movie_id}/similar?${getLanguage(language)}${getPageNumber(page)}`,
     translations: (movie_id: number) =>
       `${API_BASE_URL.movie}/${movie_id}/translations`,
     videos: ({ movie_id, language }: URLDetailsMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/videos${getLanguage(language)}`,
+      `${API_BASE_URL.movie}/${movie_id}/videos?${getLanguage(language)}`,
     watchProviders: (movie_id: number) =>
       `${API_BASE_URL.movie}/${movie_id}/watch/providers`,
     addRating: ({ movie_id, session_id }: URLAccountStatesMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/rating${getSessionID(session_id)}`,
+      `${API_BASE_URL.movie}/${movie_id}/rating?${getSessionID(session_id)}`,
     deleteRating: ({ movie_id, session_id }: URLAccountStatesMovieProps) =>
-      `${API_BASE_URL.movie}/${movie_id}/rating${getSessionID(session_id)}`,
+      `${API_BASE_URL.movie}/${movie_id}/rating?${getSessionID(session_id)}`,
   },
   NETWORKS: {
     details: (network_id: number) => `${API_BASE_URL.movie}/${network_id}`,
@@ -296,28 +296,28 @@ export const API_ROUTES = {
   },
   PEOPLE_LISTS: {
     popular: ({ language, page }: URLPageLanguageProps) =>
-      `${API_BASE_URL.person}/popular${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.person}/popular?${getLanguage(language)}${getPageNumber(page)}`,
   },
   PEOPLE: {
     details: ({ person_id, language }: URLDetailsPeopleProps) =>
-      `${API_BASE_URL.person}/${person_id}${getLanguage(language)}`,
+      `${API_BASE_URL.person}/${person_id}?${getLanguage(language)}`,
     changes: ({
       person_id,
       end_date,
       page,
       start_date,
     }: URLChangesPersonProps) =>
-      `${API_BASE_URL.person}/${person_id}/changes${getEndDate(end_date)}${getPageNumber(page)}${getStartDate(start_date)}`,
+      `${API_BASE_URL.person}/${person_id}/changes?${getEndDate(end_date)}${getPageNumber(page)}${getStartDate(start_date)}`,
     combinedCredits: ({ person_id, language }: URLDetailsPeopleProps) =>
-      `${API_BASE_URL.person}/${person_id}/combined_credits${getLanguage(language)}`,
+      `${API_BASE_URL.person}/${person_id}/combined_credits?${getLanguage(language)}`,
     externalIDs: (person_id: number) =>
       `${API_BASE_URL.person}/${person_id}/external_ids`,
     images: (person_id: number) => `${API_BASE_URL.person}/${person_id}/images`,
     latest: () => `${API_BASE_URL.person}/latest`,
     movieCredits: ({ person_id, language }: URLDetailsPeopleProps) =>
-      `${API_BASE_URL.person}/${person_id}/movie_credits${getLanguage(language)}`,
+      `${API_BASE_URL.person}/${person_id}/movie_credits?${getLanguage(language)}`,
     tvCredits: ({ person_id, language }: URLDetailsPeopleProps) =>
-      `${API_BASE_URL.person}/${person_id}/tv_credits${getLanguage(language)}`,
+      `${API_BASE_URL.person}/${person_id}/tv_credits?${getLanguage(language)}`,
     translations: (person_id: number) =>
       `${API_BASE_URL.person}/${person_id}/translations`,
   },
@@ -332,11 +332,11 @@ export const API_ROUTES = {
       page,
       region,
     }: URLCollectionSearchProps) =>
-      `${API_BASE_URL.search}/collection${getQuery(query)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
+      `${API_BASE_URL.search}/collection?${getQuery(query)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPageNumber(page)}${getRegion(region)}`,
     company: ({ query, page }: URLSearchProps) =>
-      `${API_BASE_URL.search}/company${getQuery(query)}${getPageNumber(page)}`,
+      `${API_BASE_URL.search}/company?${getQuery(query)}${getPageNumber(page)}`,
     keyword: ({ query, page }: URLSearchProps) =>
-      `${API_BASE_URL.search}/keyword${getQuery(query)}${getPageNumber(page)}`,
+      `${API_BASE_URL.search}/keyword?${getQuery(query)}${getPageNumber(page)}`,
     movie: ({
       query,
       include_adult = false,
@@ -346,21 +346,21 @@ export const API_ROUTES = {
       year,
       primary_release_year,
     }: URLMovieSearchProps) =>
-      `${API_BASE_URL.search}/movie${getQuery(query)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPrimaryReleaseYear(primary_release_year)}${getPageNumber(page)}${getRegion(region)}${getYear(year)}`,
+      `${API_BASE_URL.search}/movie?${getQuery(query)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPrimaryReleaseYear(primary_release_year)}${getPageNumber(page)}${getRegion(region)}${getYear(year)}`,
     multi: ({
       query,
       include_adult = false,
       language,
       page,
     }: URLMultiSearchProps) =>
-      `${API_BASE_URL.search}/multi${getQuery(query)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.search}/multi?${getQuery(query)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPageNumber(page)}`,
     person: ({
       query,
       include_adult = false,
       language,
       page,
     }: URLMultiSearchProps) =>
-      `${API_BASE_URL.search}/person${getQuery(query)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.search}/person?${getQuery(query)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPageNumber(page)}`,
     tv: ({
       query,
       first_air_date_year,
@@ -369,7 +369,7 @@ export const API_ROUTES = {
       page,
       year,
     }: URLTVSearchProps) =>
-      `${API_BASE_URL.search}/tv${getQuery(query)}${getFirstAirDateYear(first_air_date_year)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPageNumber(page)}${getYear(year)}`,
+      `${API_BASE_URL.search}/tv?${getQuery(query)}${getFirstAirDateYear(first_air_date_year)}${getIncludeAdult(include_adult)}${getLanguage(language)}${getPageNumber(page)}${getYear(year)}`,
   },
   TRENDING: {
     all: ({
@@ -377,75 +377,75 @@ export const API_ROUTES = {
       language,
       page,
     }: URLTrendingProps) =>
-      `${API_BASE_URL.trending}/all/${time_window}${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.trending}/all/${time_window}?${getLanguage(language)}${getPageNumber(page)}`,
     movie: ({
       time_window = TIME_WINDOW.DAY,
       language,
       page,
     }: URLTrendingProps) =>
-      `${API_BASE_URL.trending}/movie/${time_window}${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.trending}/movie/${time_window}?${getLanguage(language)}${getPageNumber(page)}`,
     person: ({
       time_window = TIME_WINDOW.DAY,
       language,
       page,
     }: URLTrendingProps) =>
-      `${API_BASE_URL.trending}/person/${time_window}${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.trending}/person/${time_window}?${getLanguage(language)}${getPageNumber(page)}`,
     tv: ({ time_window = TIME_WINDOW.DAY, language, page }: URLTrendingProps) =>
-      `${API_BASE_URL.trending}/tv/${time_window}${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.trending}/tv/${time_window}?${getLanguage(language)}${getPageNumber(page)}`,
   },
   TV_SERIES_LISTS: {
     airingToday: ({ language, page, timezone }: URLAiringTodayTVProps) =>
-      `${API_BASE_URL.tv}/airing_today${getLanguage(language)}${getPageNumber(page)}${getTimezone(timezone)}`,
+      `${API_BASE_URL.tv}/airing_today?${getLanguage(language)}${getPageNumber(page)}${getTimezone(timezone)}`,
     onTheAir: ({ language, page, timezone }: URLAiringTodayTVProps) =>
-      `${API_BASE_URL.tv}/on_the_air${getLanguage(language)}${getPageNumber(page)}${getTimezone(timezone)}`,
+      `${API_BASE_URL.tv}/on_the_air?${getLanguage(language)}${getPageNumber(page)}${getTimezone(timezone)}`,
     popular: ({ language, page }: URLPageLanguageProps) =>
-      `${API_BASE_URL.tv}/popular${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.tv}/popular?${getLanguage(language)}${getPageNumber(page)}`,
     topRated: ({ language, page }: URLPageLanguageProps) =>
-      `${API_BASE_URL.tv}/top_rated${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.tv}/top_rated?${getLanguage(language)}${getPageNumber(page)}`,
   },
   TV_SERIES: {
     details: ({ series_id, language }: URLDetailsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}?${getLanguage(language)}`,
     accountStates: ({ series_id, session_id }: URLAccountStatesTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/account_states${getSessionID(session_id)}`,
+      `${API_BASE_URL.tv}/${series_id}/account_states?${getSessionID(session_id)}`,
     aggregateCredits: ({ series_id, language }: URLDetailsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/aggregate_credits${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/aggregate_credits?${getLanguage(language)}`,
     alternativeTitles: (series_id: string) =>
       `${API_BASE_URL.tv}/${series_id}/alternative_titles`,
     changes: ({ series_id, end_date, page, start_date }: URLChangesTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/changes${getEndDate(end_date)}${getPageNumber(page)}${getStartDate(start_date)}`,
+      `${API_BASE_URL.tv}/${series_id}/changes?${getEndDate(end_date)}${getPageNumber(page)}${getStartDate(start_date)}`,
     contentRatings: (series_id: string) =>
       `${API_BASE_URL.tv}/${series_id}/content_ratings`,
     credits: ({ series_id, language }: URLDetailsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/credits${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/credits?${getLanguage(language)}`,
     episodeGroups: (series_id: string) =>
       `${API_BASE_URL.tv}/${series_id}/episode_groups`,
     externalIDs: (series_id: string) =>
       `${API_BASE_URL.tv}/${series_id}/external_ids`,
     images: ({ series_id, language }: URLDetailsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/images${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/images?${getLanguage(language)}`,
     keywords: (series_id: string) => `${API_BASE_URL.tv}/${series_id}/keywords`,
     latest: () => `${API_BASE_URL.tv}/latest`,
     lists: ({ series_id, language, page }: URLListsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/lists${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.tv}/${series_id}/lists?${getLanguage(language)}${getPageNumber(page)}`,
     recommendations: ({ series_id, language, page }: URLListsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/recommendations${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.tv}/${series_id}/recommendations?${getLanguage(language)}${getPageNumber(page)}`,
     reviews: ({ series_id, language, page }: URLListsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/reviews${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.tv}/${series_id}/reviews?${getLanguage(language)}${getPageNumber(page)}`,
     screenedTheatrically: (series_id: string) =>
       `${API_BASE_URL.tv}/${series_id}/screened_theatrically`,
     similar: ({ series_id, language, page }: URLListsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/similar${getLanguage(language)}${getPageNumber(page)}`,
+      `${API_BASE_URL.tv}/${series_id}/similar?${getLanguage(language)}${getPageNumber(page)}`,
     translations: (series_id: string) =>
       `${API_BASE_URL.tv}/${series_id}/translations`,
     videos: ({ series_id, language }: URLDetailsTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/videos${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/videos?${getLanguage(language)}`,
     watchProviders: (series_id: string) =>
       `${API_BASE_URL.tv}/${series_id}/watch/providers`,
     addRating: ({ series_id, session_id }: URLAccountStatesTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/rating${getSessionID(session_id)}`,
+      `${API_BASE_URL.tv}/${series_id}/rating?${getSessionID(session_id)}`,
     deleteRating: ({ series_id, session_id }: URLAccountStatesTVProps) =>
-      `${API_BASE_URL.tv}/${series_id}/rating${getSessionID(session_id)}`,
+      `${API_BASE_URL.tv}/${series_id}/rating?${getSessionID(session_id)}`,
   },
   TV_SEASONS: {
     details: ({
@@ -453,32 +453,32 @@ export const API_ROUTES = {
       season_number,
       language,
     }: URLDetailsTVSeasonsProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}?${getLanguage(language)}`,
     accountStates: ({
       series_id,
       season_number,
       session_id,
     }: URLAccountStatesTVProps & { season_number: number }) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/account_states${getSessionID(session_id)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/account_states?${getSessionID(session_id)}`,
     aggregateCredits: ({
       series_id,
       season_number,
       language,
     }: URLDetailsTVSeasonsProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/aggregate_credits${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/aggregate_credits?${getLanguage(language)}`,
     changes: ({
       season_id,
       end_date,
       page,
       start_date,
     }: URLChangesTVSeasonsProps) =>
-      `${API_BASE_URL.tv}/season/${season_id}/changes${getEndDate(end_date)}${getPageNumber(page)}${getStartDate(start_date)}`,
+      `${API_BASE_URL.tv}/season/${season_id}/changes?${getEndDate(end_date)}${getPageNumber(page)}${getStartDate(start_date)}`,
     credits: ({
       series_id,
       season_number,
       language,
     }: URLDetailsTVSeasonsProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/credits${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/credits?${getLanguage(language)}`,
     externalIDs: ({ series_id, season_number }: URLTVSeriesSeasonsProps) =>
       `${API_BASE_URL.tv}/${series_id}/season/${season_number}/external_ids`,
     images: ({
@@ -486,7 +486,7 @@ export const API_ROUTES = {
       season_number,
       language,
     }: URLDetailsTVSeasonsProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/images${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/images?${getLanguage(language)}`,
     translations: ({ series_id, season_number }: URLTVSeriesSeasonsProps) =>
       `${API_BASE_URL.tv}/${series_id}/season/${season_number}/translations`,
     videos: ({
@@ -494,7 +494,7 @@ export const API_ROUTES = {
       season_number,
       language,
     }: URLDetailsTVSeasonsProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/videos${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/videos?${getLanguage(language)}`,
     watchProviders: ({ series_id, season_number }: URLTVSeriesSeasonsProps) =>
       `${API_BASE_URL.tv}/${series_id}season/${season_number}/watch/providers`,
   },
@@ -505,14 +505,14 @@ export const API_ROUTES = {
       episode_number,
       language,
     }: URLDetailsTVEpisodesProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}?${getLanguage(language)}`,
     accountStates: ({
       series_id,
       season_number,
       episode_number,
       session_id,
     }: URLTVSeriesSeasonsEpisodesProps & { session_id?: string }) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/account_states${getSessionID(session_id)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/account_states?${getSessionID(session_id)}`,
     changes: (episode_id: number) =>
       `${API_BASE_URL.tv}/episode/${episode_id}/changes`,
     credits: ({
@@ -521,7 +521,7 @@ export const API_ROUTES = {
       episode_number,
       language,
     }: URLDetailsTVEpisodesProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/credits${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/credits?${getLanguage(language)}`,
     externalIDs: ({
       series_id,
       season_number,
@@ -534,7 +534,7 @@ export const API_ROUTES = {
       episode_number,
       language,
     }: URLDetailsTVEpisodesProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/images${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/images?${getLanguage(language)}`,
     translations: ({
       series_id,
       season_number,
@@ -547,21 +547,21 @@ export const API_ROUTES = {
       episode_number,
       language,
     }: URLDetailsTVEpisodesProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/videos${getLanguage(language)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/videos?${getLanguage(language)}`,
     addRating: ({
       series_id,
       season_number,
       episode_number,
       session_id,
     }: URLRatingTVEpisodesProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/rating${getSessionID(session_id)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/rating?${getSessionID(session_id)}`,
     deleteRating: ({
       series_id,
       season_number,
       episode_number,
       session_id,
     }: URLRatingTVEpisodesProps) =>
-      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/rating${getSessionID(session_id)}`,
+      `${API_BASE_URL.tv}/${series_id}/season/${season_number}/episode/${episode_number}/rating?${getSessionID(session_id)}`,
   },
   TV_EPISODE_GROUPS: {
     details: (tv_episode_group_id: string) =>
@@ -569,13 +569,13 @@ export const API_ROUTES = {
   },
   WATCH_PROVIDERS: {
     availableRegions: (language?: string) =>
-      `${API_BASE_URL.watch}/providers/regions/${getLanguage(language)}`,
+      `${API_BASE_URL.watch}/providers/regions/?${getLanguage(language)}`,
     mediaProviders: ({
       mediaType,
       language,
       watch_region,
     }: URLWatchProvidersProps) =>
-      `${API_BASE_URL.watch}/providers/${mediaType}${getLanguage(language)}${getWatchProviders(watch_region)}`,
+      `${API_BASE_URL.watch}/providers/${mediaType}?${getLanguage(language)}${getWatchProviders(watch_region)}`,
   },
 };
 

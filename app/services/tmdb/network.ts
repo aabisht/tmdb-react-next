@@ -2,10 +2,10 @@ import { API_ROUTES } from "@constants";
 import { createServiceRequest } from "@services/serviceRequest";
 
 export const networkService = {
-  getDetails: (network_id: number) =>
+  getDetails: async (network_id: number) =>
     createServiceRequest(API_ROUTES.NETWORKS.details(network_id)),
-  getAlternativeNames: (network_id: number) =>
+  getAlternativeNames: async (network_id: number) =>
     createServiceRequest(API_ROUTES.NETWORKS.alternativeNames(network_id)),
-  getImages: (network_id: number) =>
+  getImages: async (network_id: number) =>
     createServiceRequest(API_ROUTES.NETWORKS.images(network_id)),
 };

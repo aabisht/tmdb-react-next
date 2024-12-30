@@ -7,7 +7,7 @@ import {
 import { createServiceRequest } from "@services/serviceRequest";
 
 export const tvEpisodesService = {
-  getDetails: ({
+  getDetails: async ({
     series_id,
     season_number,
     episode_number,
@@ -21,7 +21,7 @@ export const tvEpisodesService = {
         language,
       }),
     ),
-  getAccountStates: ({
+  getAccountStates: async ({
     series_id,
     season_number,
     episode_number,
@@ -35,9 +35,9 @@ export const tvEpisodesService = {
         session_id,
       }),
     ),
-  getChanges: (episode_id: number) =>
+  getChanges: async (episode_id: number) =>
     createServiceRequest(API_ROUTES.TV_EPISODES.changes(episode_id)),
-  getCredits: ({
+  getCredits: async ({
     series_id,
     season_number,
     episode_number,
@@ -51,7 +51,7 @@ export const tvEpisodesService = {
         language,
       }),
     ),
-  getExternalIDs: ({
+  getExternalIDs: async ({
     series_id,
     season_number,
     episode_number,
@@ -63,7 +63,7 @@ export const tvEpisodesService = {
         episode_number,
       }),
     ),
-  getImages: ({
+  getImages: async ({
     series_id,
     season_number,
     episode_number,
@@ -77,7 +77,7 @@ export const tvEpisodesService = {
         language,
       }),
     ),
-  getTranslations: ({
+  getTranslations: async ({
     series_id,
     season_number,
     episode_number,
@@ -89,7 +89,7 @@ export const tvEpisodesService = {
         episode_number,
       }),
     ),
-  getVideos: ({
+  getVideos: async ({
     series_id,
     season_number,
     episode_number,
@@ -103,7 +103,7 @@ export const tvEpisodesService = {
         language,
       }),
     ),
-  addRating: ({
+  addRating: async ({
     series_id,
     season_number,
     episode_number,
@@ -120,7 +120,7 @@ export const tvEpisodesService = {
       API_TYPE.POST,
       data,
     ),
-  deleteRating: ({
+  deleteRating: async ({
     series_id,
     season_number,
     episode_number,
@@ -136,7 +136,7 @@ export const tvEpisodesService = {
       API_TYPE.DELETE,
       {},
     ),
-  getTvEpisodeGroupsDetails: (tv_episode_group_id: string) =>
+  getTvEpisodeGroupsDetails: async (tv_episode_group_id: string) =>
     createServiceRequest(
       API_ROUTES.TV_EPISODE_GROUPS.details(tv_episode_group_id),
     ),

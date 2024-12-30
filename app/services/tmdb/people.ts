@@ -7,11 +7,11 @@ import {
 import { createServiceRequest } from "@services/serviceRequest";
 
 export const personService = {
-  getPopular: ({ language, page }: URLPageLanguageProps) =>
+  getPopular: async ({ language, page }: URLPageLanguageProps) =>
     createServiceRequest(API_ROUTES.PEOPLE_LISTS.popular({ language, page })),
-  getDetails: ({ person_id, language }: URLDetailsPeopleProps) =>
+  getDetails: async ({ person_id, language }: URLDetailsPeopleProps) =>
     createServiceRequest(API_ROUTES.PEOPLE.details({ person_id, language })),
-  getChanges: ({
+  getChanges: async ({
     person_id,
     end_date,
     page,
@@ -25,21 +25,21 @@ export const personService = {
         start_date,
       }),
     ),
-  getCombinedCredits: ({ person_id, language }: URLDetailsPeopleProps) =>
+  getCombinedCredits: async ({ person_id, language }: URLDetailsPeopleProps) =>
     createServiceRequest(
       API_ROUTES.PEOPLE.combinedCredits({ person_id, language }),
     ),
-  getExternalIDs: (person_id: number) =>
+  getExternalIDs: async (person_id: number) =>
     createServiceRequest(API_ROUTES.PEOPLE.externalIDs(person_id)),
-  getImages: (person_id: number) =>
+  getImages: async (person_id: number) =>
     createServiceRequest(API_ROUTES.PEOPLE.images(person_id)),
-  getLatest: () => createServiceRequest(API_ROUTES.PEOPLE.latest()),
-  getMovieCredits: ({ person_id, language }: URLDetailsPeopleProps) =>
+  getLatest: async () => createServiceRequest(API_ROUTES.PEOPLE.latest()),
+  getMovieCredits: async ({ person_id, language }: URLDetailsPeopleProps) =>
     createServiceRequest(
       API_ROUTES.PEOPLE.movieCredits({ person_id, language }),
     ),
-  getTvCredits: ({ person_id, language }: URLDetailsPeopleProps) =>
+  getTvCredits: async ({ person_id, language }: URLDetailsPeopleProps) =>
     createServiceRequest(API_ROUTES.PEOPLE.tvCredits({ person_id, language })),
-  getTranslations: (person_id: number) =>
+  getTranslations: async (person_id: number) =>
     createServiceRequest(API_ROUTES.PEOPLE.translations(person_id)),
 };

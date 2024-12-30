@@ -8,7 +8,7 @@ import {
 import { createServiceRequest } from "@services/serviceRequest";
 
 export const tvSeasonsService = {
-  getDetails: ({
+  getDetails: async ({
     series_id,
     season_number,
     language,
@@ -20,7 +20,7 @@ export const tvSeasonsService = {
         language,
       }),
     ),
-  getAccountStates: ({
+  getAccountStates: async ({
     series_id,
     season_number,
     session_id,
@@ -32,7 +32,7 @@ export const tvSeasonsService = {
         session_id,
       }),
     ),
-  getAggregateCredits: ({
+  getAggregateCredits: async ({
     series_id,
     season_number,
     language,
@@ -44,7 +44,7 @@ export const tvSeasonsService = {
         language,
       }),
     ),
-  getChanges: ({
+  getChanges: async ({
     season_id,
     end_date,
     page,
@@ -58,7 +58,7 @@ export const tvSeasonsService = {
         start_date,
       }),
     ),
-  getCredits: ({
+  getCredits: async ({
     series_id,
     season_number,
     language,
@@ -70,11 +70,14 @@ export const tvSeasonsService = {
         language,
       }),
     ),
-  getExternalIDs: ({ series_id, season_number }: URLTVSeriesSeasonsProps) =>
+  getExternalIDs: async ({
+    series_id,
+    season_number,
+  }: URLTVSeriesSeasonsProps) =>
     createServiceRequest(
       API_ROUTES.TV_SEASONS.credits({ series_id, season_number }),
     ),
-  getImages: ({
+  getImages: async ({
     series_id,
     season_number,
     language,
@@ -86,11 +89,14 @@ export const tvSeasonsService = {
         language,
       }),
     ),
-  getTranslations: ({ series_id, season_number }: URLTVSeriesSeasonsProps) =>
+  getTranslations: async ({
+    series_id,
+    season_number,
+  }: URLTVSeriesSeasonsProps) =>
     createServiceRequest(
       API_ROUTES.TV_SEASONS.translations({ series_id, season_number }),
     ),
-  getVideos: ({
+  getVideos: async ({
     series_id,
     season_number,
     language,
@@ -102,7 +108,10 @@ export const tvSeasonsService = {
         language,
       }),
     ),
-  getWwatchProviders: ({ series_id, season_number }: URLTVSeriesSeasonsProps) =>
+  getWwatchProviders: async ({
+    series_id,
+    season_number,
+  }: URLTVSeriesSeasonsProps) =>
     createServiceRequest(
       API_ROUTES.TV_SEASONS.watchProviders({ series_id, season_number }),
     ),

@@ -2,10 +2,9 @@ import axios, { AxiosResponse } from "axios";
 
 const getApi = (
   url: string,
-  params: { [key: string]: string },
   headers: { [key: string]: string },
 ): Promise<AxiosResponse<any>> => {
-  return axios.get(url, { params, headers });
+  return axios.get(url, { headers });
 };
 
 const postApi = (

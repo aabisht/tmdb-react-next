@@ -3,7 +3,7 @@ import { URLTrendingProps } from "@definitions";
 import { createServiceRequest } from "@services/serviceRequest";
 
 export const trendingService = {
-  getAll: ({
+  getAll: async ({
     time_window = TIME_WINDOW.DAY,
     language,
     page,
@@ -15,7 +15,7 @@ export const trendingService = {
         page,
       }),
     ),
-  getMovie: ({
+  getMovie: async ({
     time_window = TIME_WINDOW.DAY,
     language,
     page,
@@ -27,7 +27,7 @@ export const trendingService = {
         page,
       }),
     ),
-  getPerson: ({
+  getPerson: async ({
     time_window = TIME_WINDOW.DAY,
     language,
     page,
@@ -39,7 +39,7 @@ export const trendingService = {
         page,
       }),
     ),
-  getTv: ({
+  getTv: async ({
     time_window = TIME_WINDOW.DAY,
     language,
     page,
@@ -51,7 +51,7 @@ export const trendingService = {
         page,
       }),
     ),
-  getMovieAndTv: ({
+  getMovieAndTv: async ({
     time_window = TIME_WINDOW.DAY,
     language,
     page,

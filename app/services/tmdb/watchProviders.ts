@@ -3,7 +3,7 @@ import { URLWatchProvidersProps } from "@definitions";
 import { createServiceRequest } from "@services/serviceRequest";
 
 export const watchProvidersService = {
-  getAvailableRegions: (language?: string) =>
+  getAvailableRegions: async (language?: string) =>
     createServiceRequest(API_ROUTES.WATCH_PROVIDERS.availableRegions(language)),
   getMediaProviders: async ({
     mediaType,

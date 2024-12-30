@@ -25,7 +25,7 @@ export const httpService = (
       apiMethod = deleteApi(url, { ...headerOptions });
       break;
     default:
-      apiMethod = getApi(url, data, { ...headerOptions });
+      apiMethod = getApi(url, { ...headerOptions });
       break;
   }
 
