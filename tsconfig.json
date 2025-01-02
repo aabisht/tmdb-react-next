@@ -27,7 +27,8 @@
       "@definitions": ["app/definitions/index.ts"],
       "@utils/*": ["app/utils/*"],
       "@redux/*": ["app/redux/*"],
-      "@services/*": ["app/services/*"]
+      "@services/*": ["app/services/*"],
+      "@modules/*": ["app/modules/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

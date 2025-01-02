@@ -1,0 +1,5 @@
+@use "../../styles/variables";
+
+.mediaCarousel {
+  padding: 0 var(--#{variables.$prefix}container-padding-x);
+}
